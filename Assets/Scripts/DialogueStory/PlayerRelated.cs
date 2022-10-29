@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using StarterAssets;
+using UnityEngine;
 
 namespace DialogueStory
 {
@@ -7,6 +8,26 @@ namespace DialogueStory
     /// </summary>
     public class PlayerRelated
     {
+        private static FirstPersonController _player;
+
+        private static FirstPersonController player
+        {
+            get
+            {
+                if (_player == null)
+                {
+                    _player = Object.FindObjectOfType<FirstPersonController>();
+                }
+
+                if (_player == null)
+                {
+                    Debug.LogWarning("._.");
+                }
+
+                return _player;
+            }
+        }
+        
         /// <summary>
         /// If true, the player can move
         /// </summary>
@@ -14,18 +35,16 @@ namespace DialogueStory
         {
             get
             {
-                Debug.Log("GetPlayerMovementEnabled called: " + _movementEnabled);
-                return _movementEnabled;
+                Debug.Log("GetPlayerMovementEnabled called: " + player.movementEnabled);
+                return player.movementEnabled;
             }
 
             set
             {
                 Debug.Log("SetPlayerMovementEnabled called: " + value);
-                _movementEnabled = value;
+                player.movementEnabled = value;
             }
         }
-
-        private static bool _movementEnabled = true;
         
         /// <summary>
         /// If true, the player can interact

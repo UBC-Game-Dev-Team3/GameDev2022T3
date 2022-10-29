@@ -15,7 +15,7 @@ namespace Sound
     {
         private const float SilentVolume = 0.0001f;
         private const string MusicFadeVolumeParameter = "MusicFadeVolume";
-        [SerializeField] private string pathToMasterMixer = "Sound/MasterMixer"; // relative to Resource folder
+        [SerializeField] private string pathToMasterMixer = "Sounds/MasterMixer"; // relative to Resource folder
         private AudioMixer _masterAudioMixer;
 
         /// <summary>
