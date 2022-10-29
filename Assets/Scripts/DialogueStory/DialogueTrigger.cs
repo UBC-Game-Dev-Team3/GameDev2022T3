@@ -1,5 +1,4 @@
-﻿using Player;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DialogueStory
 {
@@ -31,7 +30,7 @@ namespace DialogueStory
         public static bool TriggerDialogue(string dialogue, bool stopMovement = false)
         {
             if (string.IsNullOrWhiteSpace(dialogue)) return false;
-            if (stopMovement) PlayerScript.Instance.movementEnabled = false;
+            if (stopMovement) PlayerRelated.MovementEnabled = false;
             BranchingStoryController.Instance.TryOpenDialogue(dialogue);
             return true;
         }

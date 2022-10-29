@@ -2,7 +2,6 @@
 using System.Linq;
 using DialogueStory.Actions;
 using Ink.Runtime;
-using Player;
 using Singleton;
 using UnityEngine;
 using UnityEngine.Events;
@@ -106,7 +105,7 @@ namespace DialogueStory
         private void ExitStoryMode()
         {
             State = StoryStates.Idle;
-            PlayerScript.Instance.movementEnabled = true;
+            PlayerRelated.MovementEnabled = true;
             //CustomInputManager.CurrentMode = InputMode.GameMovement;
         }
 

@@ -1,5 +1,4 @@
-﻿using Player;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace DialogueStory
@@ -12,7 +11,7 @@ namespace DialogueStory
         public void OnTriggerExit2D(Collider2D other)
         {
             DialogueManager.Instance.Close();
-            PlayerScript.Instance.interactionEnabled = true;
+            PlayerRelated.InteractionEnabled = true;
             eventOnExit.Invoke();
         }
     }

@@ -1,5 +1,4 @@
-﻿using Player;
-using Singleton;
+﻿using Singleton;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -103,7 +102,7 @@ namespace DialogueStory
             dialogueText.text = DefaultEmptyText;       // dialogueText is null when re-entering scene in build version, single player 
             if (dialogueCanvas == null) InstantiateFieldsIfNull(); // i don't wanna debug myra's singleton code or why this s--- is null
             dialogueCanvas.gameObject.SetActive(true);
-            PlayerScript.Instance.interactionEnabled = false;
+            PlayerRelated.InteractionEnabled = false;
             Debug.Log("Opened dialogue screen...");
         }
 
@@ -113,7 +112,7 @@ namespace DialogueStory
         public void Hide()
         {
             CurrentlyTyping = false;
-            PlayerScript.Instance.interactionEnabled = true;
+            PlayerRelated.InteractionEnabled = true;
 
             dialogueCanvas.gameObject.SetActive(false);
         }
@@ -137,6 +136,8 @@ namespace DialogueStory
         /// <param name="character">Character whose sprite we want to display.</param>
         private void SetCharacter(string character)
         {
+            // for the record floria, yes, the lice communism code has this commented out and unused
+            // and yes, it somehow won awards
             /*
             switch (character)
             {

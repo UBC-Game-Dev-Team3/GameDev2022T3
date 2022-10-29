@@ -1,6 +1,5 @@
-﻿using DefaultNamespace;
-using Player;
-using UnityEngine;
+﻿using UnityEngine;
+using Util;
 
 namespace DialogueStory
 {
@@ -21,7 +20,7 @@ namespace DialogueStory
             base.Interact(src, args);
             if (stopMovement)
             {
-                PlayerScript.Instance.movementEnabled = false;
+                PlayerRelated.MovementEnabled = false;
             }
             BranchingStoryController.Instance.TryOpenDialogue(string.IsNullOrWhiteSpace(knot) ? BranchingStoryController.Instance.interrogationKnotTextCheck : knot);
         }
