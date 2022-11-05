@@ -24,6 +24,7 @@ Install git from their [webpage](http://git-scm.com). I also highly recommend [G
 
 - Clone the repository using `git clone https://github.com/UBC-Game-Dev-Team3/GameDev2022T3`
   - I **Highly** recommend you do this via GitHub Desktop or Rider, since GitHub is known to have permissions issues if [2FA is enabled](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/accessing-github-using-two-factor-authentication). This process has failed so many times for me - I've just used Rider since my GitHub credentials are saved there.
+  - Note that you DO NOT have to create a project in Unity Hub - running git clone will download the entirety of the project (with the exception of some Git LFS shenanigans, but would be unlikely to encounter), but you would have to add it to Unity Hub via Open -> Add Project from Disk
 - Follow these [steps in Unity](https://learn.unity.com/tutorial/set-your-default-script-editor-ide#) to integrate the IDE of choice with Unity
 - Create new branches for features you are working on and do not commit directly to the master branch (unless you're making small changes, such as adding a png file)
 - Use the master branch to pull the latest changes from the repo
