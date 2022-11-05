@@ -16,8 +16,6 @@ namespace Inventory
         [Tooltip("Displayed description of item.")] public TextMeshProUGUI descriptionDisplay;
         [Tooltip("Displayed icon.")] public Image icon;
 
-        [Tooltip("Inventory highlight")] public Transform highlight;
-
         private Item _item;
 
         /// <summary>
@@ -27,15 +25,6 @@ namespace Inventory
         {
             if (_item == null)
                 ClearSlot();
-        }
-
-        /// <summary>
-        /// Gets/sets whether the inventory slot is highlighted
-        /// </summary>
-        public bool Highlighted
-        {
-            get => highlight.gameObject.activeInHierarchy;
-            set => highlight.gameObject.SetActive(value);
         }
 
         /// <summary>

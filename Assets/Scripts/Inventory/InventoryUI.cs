@@ -16,9 +16,6 @@ namespace Inventory
         /// </remarks>
         [Tooltip("Current inventory UI.")] public GameObject inventoryUI;
 
-        [Tooltip("Audio source on switch")]
-        public AudioSource audioSourceOnSwitch;
-
         private InventoryManager _inventoryManager;
         private InventorySlot[] _slots;
 
@@ -44,26 +41,16 @@ namespace Inventory
             if (Input.GetKeyDown(SettingsManager.Instance.inventoryUp))
             {
                 int oldIndex = _inventoryManager.indexOfSelection;
-                if (oldIndex >= 0 && oldIndex < _slots.Length)
-                    _slots[oldIndex].Highlighted = false;
                 int newIndex = oldIndex - 1;
                 if (newIndex < 0) newIndex = _slots.Length - 1;
                 _inventoryManager.indexOfSelection = newIndex;
-                if (newIndex >= 0 && newIndex < _slots.Length)
-                    _slots[newIndex].Highlighted = true;
-                audioSourceOnSwitch.Play();
             }
             if (Input.GetKeyDown(SettingsManager.Instance.inventoryDown))
             {
                 int oldIndex = _inventoryManager.indexOfSelection;
-                if (oldIndex >= 0 && oldIndex < _slots.Length)
-                    _slots[oldIndex].Highlighted = false;
                 int newIndex = oldIndex + 1;
                 if (newIndex >= _slots.Length) newIndex = 0;
                 _inventoryManager.indexOfSelection = newIndex;
-                if (newIndex >= 0 && newIndex < _slots.Length)
-                    _slots[newIndex].Highlighted = true;
-                audioSourceOnSwitch.Play();
             }
         }
 
