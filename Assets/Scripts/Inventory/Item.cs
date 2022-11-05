@@ -10,6 +10,7 @@ namespace Inventory
     {
         public new string name = "New Item";
         public Sprite icon;
+        public GameObject prefab;
         [TextArea]
         public string description = "";
         public bool isDefaultItem;

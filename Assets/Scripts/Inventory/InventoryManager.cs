@@ -45,7 +45,35 @@ namespace Inventory
         [Tooltip("List of items in inventory.")]
         public List<Item> items = new List<Item>();
 
-        internal int indexOfSelection = -1;
+        private int indexOfSelection = -1;
+
+        internal Item SelectedItem
+        {
+            get
+            {
+                if (indexOfSelection < 0 || indexOfSelection >= items.Count) return null;
+                return items[indexOfSelection];
+            }
+        }
+
+        public void ChangeSelectedIndex(bool increment)
+        {
+            int oldIndex = indexOfSelection;
+            if (increment)
+            {
+                int newIndex = oldIndex + 1;
+                if (newIndex >= space) newIndex = 0;
+                indexOfSelection = newIndex;
+            }
+            else
+            {
+                int newIndex = oldIndex - 1;
+                if (newIndex < 0) newIndex = items.Count - 1;
+                indexOfSelection = newIndex;
+            }
+
+            onItemChanged.Invoke();
+        }
 
         /// <summary>
         ///     On awake, set this to private static instance
@@ -62,10 +90,12 @@ namespace Inventory
         /// </summary>
         private void Update()
         {
+            /*
             if (!Input.GetKeyDown(SettingsManager.Instance.useItemKey)) return;
             if (indexOfSelection < 0 || indexOfSelection >= items.Count) return;
             if (items[indexOfSelection] == null || !items[indexOfSelection].isUsable) return;
             items[indexOfSelection].Use();
+            */
         }
 
         /// <summary>

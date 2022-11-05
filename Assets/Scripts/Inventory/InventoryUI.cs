@@ -1,4 +1,7 @@
+using DialogueStory;
+using StarterAssets;
 using UnityEngine;
+using UnityEngine.UI;
 using Util;
 
 namespace Inventory
@@ -14,16 +17,22 @@ namespace Inventory
         /// <remarks>
         /// NOT THE PREFAB
         /// </remarks>
-        [Tooltip("Current inventory UI.")] public GameObject inventoryUI;
+        [Tooltip("Small icon indicating item to display.")] public Image activeItemDisplay;
+        /// <summary>
+        /// NOT THE PREFAB
+        /// </summary>
+        [Tooltip("Full Inventory UI")] public GameObject inventoryUI;
 
         private InventoryManager _inventoryManager;
         private InventorySlot[] _slots;
+        private StarterAssetsInputs _input;
 
         /// <summary>
         ///     On awake, find singleton inventory instance and disable the UI.
         /// </summary>
         private void Awake()
         {
+            _input = FindObjectOfType<StarterAssetsInputs>();
             _inventoryManager = InventoryManager.Instance;
             _inventoryManager.onItemChanged.AddListener(UpdateUI);
             inventoryUI.SetActive(false);
@@ -35,23 +44,25 @@ namespace Inventory
         /// </summary>
         private void Update()
         {
-            if (Input.GetKeyDown(SettingsManager.Instance.inventoryKey)) inventoryUI.SetActive(!inventoryUI.activeSelf);
+            if (_input.inventory)
+            {
+                inventoryUI.SetActive(!inventoryUI.activeSelf);
+                activeItemDisplay.enabled = !inventoryUI.activeSelf;
+                PlayerRelated.MovementEnabled = !inventoryUI.activeSelf;
+                PlayerRelated.InteractionEnabled = !inventoryUI.activeSelf;
+                _input.inventory = false;
+            }
 
             if (!inventoryUI.activeInHierarchy) return;
+            /*
             if (Input.GetKeyDown(SettingsManager.Instance.inventoryUp))
             {
-                int oldIndex = _inventoryManager.indexOfSelection;
-                int newIndex = oldIndex - 1;
-                if (newIndex < 0) newIndex = _slots.Length - 1;
-                _inventoryManager.indexOfSelection = newIndex;
+                _inventoryManager.ChangeSelectedIndex(false);
             }
             if (Input.GetKeyDown(SettingsManager.Instance.inventoryDown))
             {
-                int oldIndex = _inventoryManager.indexOfSelection;
-                int newIndex = oldIndex + 1;
-                if (newIndex >= _slots.Length) newIndex = 0;
-                _inventoryManager.indexOfSelection = newIndex;
-            }
+                _inventoryManager.ChangeSelectedIndex(true);
+            }*/
         }
 
         /// <summary>
@@ -62,6 +73,7 @@ namespace Inventory
             for (int i = 0; i < _slots.Length; i++)
                 if (i < _inventoryManager.items.Count) _slots[i].AddItem(_inventoryManager.items[i]);
                 else _slots[i].ClearSlot();
+            activeItemDisplay.sprite = _inventoryManager.SelectedItem.icon;
         }
     }
 }
