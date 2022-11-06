@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using Util;
 
 namespace Inventory
 {
@@ -45,7 +44,7 @@ namespace Inventory
         [Tooltip("List of items in inventory.")]
         public List<Item> items = new List<Item>();
 
-        private int indexOfSelection = -1;
+        public int indexOfSelection { get; private set; } = -1;
         
         internal Item LeftSelectedItem
         {
@@ -81,7 +80,7 @@ namespace Inventory
             if (increment)
             {
                 int newIndex = oldIndex + 1;
-                if (newIndex >= space) newIndex = 0;
+                if (newIndex >= items.Count) newIndex = 0;
                 indexOfSelection = newIndex;
             }
             else
@@ -102,19 +101,6 @@ namespace Inventory
             if (_privateStaticInstance != null && _privateStaticInstance != this)
                 Debug.LogWarning("More than one instance of Inventory found!");
             else _privateStaticInstance = this;
-        }
-
-        /// <summary>
-        /// Run the interact with item key
-        /// </summary>
-        private void Update()
-        {
-            /*
-            if (!Input.GetKeyDown(SettingsManager.Instance.useItemKey)) return;
-            if (indexOfSelection < 0 || indexOfSelection >= items.Count) return;
-            if (items[indexOfSelection] == null || !items[indexOfSelection].isUsable) return;
-            items[indexOfSelection].Use();
-            */
         }
 
         /// <summary>

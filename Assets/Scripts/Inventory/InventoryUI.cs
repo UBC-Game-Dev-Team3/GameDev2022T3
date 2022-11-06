@@ -29,7 +29,9 @@ namespace Inventory
         [Tooltip("Left Icon")]public Image leftIcon;
         [Tooltip("Middle Icon")]public Image middleIcon;
         [Tooltip("Right Icon")]public Image rightIcon;
+        private int displayedIndex = -1;
         public Item test;
+        public Item test2;
         
         
         private InventoryManager _inventoryManager;
@@ -45,6 +47,7 @@ namespace Inventory
             _inventoryManager.onItemChanged.AddListener(UpdateUI);
             inventoryUI.SetActive(false);
             _inventoryManager.Add(test);
+            _inventoryManager.Add(test2);
             _inventoryManager.ChangeSelectedIndex(true);
             leftIcon.preserveAspect = true;
             middleIcon.preserveAspect = true;
@@ -95,13 +98,22 @@ namespace Inventory
             {
                 if (parentFor3D.transform.childCount > 0)
                 {
-                    Destroy(parentFor3D.transform.GetChild(0));
+                    Destroy(parentFor3D.transform.GetChild(0).gameObject);
                 }
             }
             else
             {
-                GameObject go = Instantiate(_inventoryManager.SelectedItem?.prefab, parentFor3D.transform);
-                SetLayerRecursively(go, LayerMask.NameToLayer("UI"));
+                if (displayedIndex != _inventoryManager.indexOfSelection)
+                {
+                    if (parentFor3D.transform.childCount > 0)
+                    {
+                        Destroy(parentFor3D.transform.GetChild(0).gameObject);
+                        parentFor3D.transform.rotation = Quaternion.identity;
+                    }
+                    GameObject go = Instantiate(_inventoryManager.SelectedItem?.prefab, parentFor3D.transform);
+                    SetLayerRecursively(go, LayerMask.NameToLayer("UI"));
+                    displayedIndex = _inventoryManager.indexOfSelection;
+                }
             }
         }
 
@@ -114,6 +126,18 @@ namespace Inventory
                 if (null == child) continue;
                 SetLayerRecursively(child.gameObject, layer);
             }
+        }
+
+        public void OnRightIconClicked()
+        {
+            Debug.Log("Right Icon");
+            _inventoryManager.ChangeSelectedIndex(true);
+        }
+
+        public void OnLeftIconClicked()
+        {
+            Debug.Log("Left Icon");
+            _inventoryManager.ChangeSelectedIndex(false);
         }
     }
 }
