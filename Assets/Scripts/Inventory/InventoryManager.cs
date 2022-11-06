@@ -46,6 +46,16 @@ namespace Inventory
         public List<Item> items = new List<Item>();
 
         private int indexOfSelection = -1;
+        
+        internal Item LeftSelectedItem
+        {
+            get
+            {
+                if (indexOfSelection < 0 || indexOfSelection >= items.Count) return null;
+                if (indexOfSelection == 0) return items[items.Count - 1];
+                return items[indexOfSelection-1];
+            }
+        }
 
         internal Item SelectedItem
         {
@@ -53,6 +63,15 @@ namespace Inventory
             {
                 if (indexOfSelection < 0 || indexOfSelection >= items.Count) return null;
                 return items[indexOfSelection];
+            }
+        }
+        internal Item RightSelectedItem
+        {
+            get
+            {
+                if (indexOfSelection < 0 || indexOfSelection >= items.Count) return null;
+                if (indexOfSelection == items.Count-1) return items[0];
+                return items[indexOfSelection+1];
             }
         }
 
