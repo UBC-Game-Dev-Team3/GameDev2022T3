@@ -232,7 +232,7 @@
                     "name": "",
                     "id": "fdb376a8-de86-4d1c-b0aa-e5566f0e598a",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Select",

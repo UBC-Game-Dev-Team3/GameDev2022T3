@@ -1,3 +1,4 @@
+using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,12 +9,42 @@ public class Select_objects : MonoBehaviour
 {
     public Camera cm;
     public TextMeshProUGUI item_name;
+   
     public float view_range = 15f;
 
     private GameObject current_go;
+    Player_control controls;
+    Vector2 move;
+
+    private void Awake()
+    {
+        controls = new Player_control();
+        controls.Player.Select.performed += ctx => select();
+    }
+
+    private void OnEnable()
+    {
+        controls.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Player.Disable();
+    }
+
+    void select()
+    {
+        if(current_go)
+        {
+            Debug.Log("dkajfakldjfa");
+        }
+    }
 
     private void FixedUpdate()
     {
+        //Vector3 movement = new Vector3(move.x, 0, move.y) * speed * Time.deltaTime;
+        //transform.Translate(movement, Space.World);
+
         RaycastHit hit_info;
 
         //keeps track of any interactive objects that have been selected
@@ -33,16 +64,10 @@ public class Select_objects : MonoBehaviour
                 current_go = hit_info.collider.gameObject;
 
                 item_name.text = hit_info.collider.gameObject.name; //display item name
-
-                /* 
-                 * Getting errors of using system input package vs Unityengine.input class
-                if(Input.GetMouseButtonDown(0)) //select item with left click and do something
-                {
-                    Debug.Log(hit_info.collider.gameObject.name);
-                }*/
             } 
         }
       
         
     }
+
 }
