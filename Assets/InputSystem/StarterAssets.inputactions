@@ -57,8 +57,6 @@
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
-                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
