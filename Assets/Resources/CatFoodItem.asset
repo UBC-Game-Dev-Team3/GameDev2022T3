@@ -16,5 +16,4 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 4c381269fbd71c64a81a035a3a15f24c, type: 3}
   prefab: {fileID: 7459724343981098961, guid: 006833208630d714cbde6d96d0b6d8e8, type: 3}
   description: Cat food :)
-  isDefaultItem: 0
   isUsable: 0
