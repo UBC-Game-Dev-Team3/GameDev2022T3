@@ -13,7 +13,6 @@ namespace Inventory
         public GameObject prefab;
         [TextArea]
         public string description = "";
-        public bool isDefaultItem;
         [Tooltip("Whether the item is usable")]
         public bool isUsable = false;
 
@@ -28,7 +27,7 @@ namespace Inventory
         {
             if (!(other is Item item)) return false;
             if (item == null) return false;
-            return name.Equals(item.name) && icon.Equals(item.icon) && isDefaultItem == item.isDefaultItem && description.Equals(item.description);
+            return name.Equals(item.name) && icon.Equals(item.icon) && description.Equals(item.description);
         }
 
         public override int GetHashCode()
@@ -37,7 +36,7 @@ namespace Inventory
             hash = 31 * hash + (name == null ? 0 : name.GetHashCode());
             hash = 31 * hash + (icon == null ? 0 : icon.GetHashCode());
             hash = 31 * hash + (description == null ? 0 : description.GetHashCode());
-            return 31 * hash + (isDefaultItem ? 1 : 0);
+            return hash;
         }
     }
 }
