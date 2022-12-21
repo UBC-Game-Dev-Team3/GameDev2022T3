@@ -57,12 +57,21 @@
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Select",
                     "type": "Button",
                     "id": "c50ec37a-852c-4fc0-b27d-abb2b882f019",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SymbolBook",
+                    "type": "Button",
+                    "id": "2be68c5f-5b9e-4be6-ae35-e57a6fb7a290",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -276,6 +285,17 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Scroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fdc59359-5f69-48d4-ad6d-f6b1e1cf6a5d",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "SymbolBook",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -70,17 +70,6 @@ namespace Inventory
                 _input.inventory = false;
                 UpdateUI();
             }
-
-            if (!inventoryUI.activeInHierarchy) return;
-            /*
-            if (Input.GetKeyDown(SettingsManager.Instance.inventoryUp))
-            {
-                _inventoryManager.ChangeSelectedIndex(false);
-            }
-            if (Input.GetKeyDown(SettingsManager.Instance.inventoryDown))
-            {
-                _inventoryManager.ChangeSelectedIndex(true);
-            }*/
         }
 
         /// <summary>
