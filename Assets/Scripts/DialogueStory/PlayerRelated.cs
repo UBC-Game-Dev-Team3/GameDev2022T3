@@ -27,7 +27,7 @@ namespace DialogueStory
                 return _player;
             }
         }
-        
+
         /// <summary>
         /// If true, the player can move
         /// </summary>
@@ -36,7 +36,7 @@ namespace DialogueStory
             get => player.movementEnabled;
             set => player.movementEnabled = value;
         }
-        
+
         /// <summary>
         /// If true, the player can interact
         ///
@@ -47,9 +47,13 @@ namespace DialogueStory
             get => _interactionEnabled;
             set => _interactionEnabled = value;
         }
-
-        public static bool ShouldListenForUIOpenEvents { get; set; } = true;
-
+        
         private static bool _interactionEnabled = true;
+
+        public static bool ShouldListenForUIOpenEvents
+        {
+            get => player.shouldListenToUIEvents;
+            set => player.shouldListenToUIEvents = value;
+        }
     }
 }

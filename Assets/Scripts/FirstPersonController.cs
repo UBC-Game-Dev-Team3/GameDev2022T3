@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -23,6 +24,9 @@ namespace StarterAssets
 
 		[Tooltip("Whether the character responds to inputs")]
 		public bool movementEnabled = true;
+
+		[Tooltip("Take a wild guess"), NonSerialized]
+		public bool shouldListenToUIEvents = true;
 
 		[Space(10)]
 		[Tooltip("The height the player can jump")]
