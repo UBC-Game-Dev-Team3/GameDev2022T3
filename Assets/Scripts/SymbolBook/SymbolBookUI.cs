@@ -26,22 +26,22 @@ namespace SymbolBook
         {
             _input = FindObjectOfType<StarterAssetsInputs>();
             _symbols = Resources.LoadAll<Symbol>(allSymbolsPath);
-            ui?.SetActive(false);
+            if (ui) ui.SetActive(false);
         }
 
         private void Update()
         {
-            if (_input.symbolBook)
-            {
-                bool isDisplayed = ui.activeSelf;
-                ui.SetActive(!isDisplayed);
-                PlayerRelated.MovementEnabled = isDisplayed;
-                PlayerRelated.InteractionEnabled = isDisplayed;
-                Cursor.lockState = isDisplayed ? CursorLockMode.Locked : CursorLockMode.None;
-                _input.symbolBook = false;
-                SaveToObject();
-                UpdateUI();
-            }
+            if (!_input.symbolBook) return;
+            bool isDisplayed = ui.activeSelf;
+            _input.symbolBook = false;
+            if ((!isDisplayed && !PlayerRelated.ShouldListenForUIOpenEvents) || (nameField.isFocused || description.isFocused)) return;
+            ui.SetActive(!isDisplayed);
+            PlayerRelated.MovementEnabled = isDisplayed;
+            PlayerRelated.InteractionEnabled = isDisplayed;
+            Cursor.lockState = isDisplayed ? CursorLockMode.Locked : CursorLockMode.None;
+            SaveToObject();
+            UpdateUI();
+            PlayerRelated.ShouldListenForUIOpenEvents = isDisplayed;
         }
 
         private void SaveToObject()
