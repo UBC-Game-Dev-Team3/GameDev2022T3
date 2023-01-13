@@ -8,7 +8,6 @@ namespace SymbolBook
 {
     public class SymbolBookUI : MonoBehaviour
     {
-        public string allSymbolsPath = "Symbols";
         public GameObject ui;
 
         public TMP_InputField nameField;
@@ -18,14 +17,14 @@ namespace SymbolBook
         public Image image;
         private StarterAssetsInputs _input;
         private int index = 0;
-        private Symbol[] _symbols;
+        private SymbolManager _manager;
         /// <summary>
         ///     On awake, find singleton inventory instance and disable the UI.
         /// </summary>
         private void Awake()
         {
             _input = FindObjectOfType<StarterAssetsInputs>();
-            _symbols = Resources.LoadAll<Symbol>(allSymbolsPath);
+            _manager = SymbolManager.Instance;
             if (ui) ui.SetActive(false);
         }
 
@@ -46,8 +45,8 @@ namespace SymbolBook
 
         private void SaveToObject()
         {
-            _symbols[index].PlayerSymbolName = nameField.text;
-            _symbols[index].PlayerNotes = description.text;
+            _manager.symbols[index].PlayerSymbolName = nameField.text;
+            _manager.symbols[index].PlayerNotes = description.text;
         }
 
         /// <summary>
@@ -55,15 +54,15 @@ namespace SymbolBook
         /// </summary>
         public void UpdateUI()
         {
-            nameField.text = _symbols[index].PlayerSymbolName;
-            description.text = _symbols[index].PlayerNotes;
-            image.sprite = _symbols[index].image;
+            nameField.text = _manager.symbols[index].PlayerSymbolName;
+            description.text = _manager.symbols[index].PlayerNotes;
+            image.sprite = _manager.symbols[index].image;
         }
         
         public void OnRightClicked()
         {
             SaveToObject();
-            if (index == _symbols.Length - 1) index = -1;
+            if (index == _manager.symbols.Length - 1) index = -1;
             index++;
             UpdateUI();
         }
@@ -71,7 +70,7 @@ namespace SymbolBook
         public void OnLeftClicked()
         {
             SaveToObject();
-            if (index == 0) index = _symbols.Length;
+            if (index == 0) index = _manager.symbols.Length;
             index--;
             UpdateUI();
         }
