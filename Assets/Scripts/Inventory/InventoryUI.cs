@@ -60,27 +60,17 @@ namespace Inventory
         /// </summary>
         private void Update()
         {
-            if (_input.inventory)
-            {
-                inventoryUI.SetActive(!inventoryUI.activeSelf);
-                activeItemDisplay.enabled = !inventoryUI.activeSelf;
-                PlayerRelated.MovementEnabled = !inventoryUI.activeSelf;
-                PlayerRelated.InteractionEnabled = !inventoryUI.activeSelf;
-                Cursor.lockState = activeItemDisplay.enabled ? CursorLockMode.Locked : CursorLockMode.None;
-                _input.inventory = false;
-                UpdateUI();
-            }
-
-            if (!inventoryUI.activeInHierarchy) return;
-            /*
-            if (Input.GetKeyDown(SettingsManager.Instance.inventoryUp))
-            {
-                _inventoryManager.ChangeSelectedIndex(false);
-            }
-            if (Input.GetKeyDown(SettingsManager.Instance.inventoryDown))
-            {
-                _inventoryManager.ChangeSelectedIndex(true);
-            }*/
+            if (!_input.inventory) return;
+            bool isDisplayed = inventoryUI.activeSelf;
+            _input.inventory = false;
+            if (!isDisplayed && !PlayerRelated.ShouldListenForUIOpenEvents) return;
+            inventoryUI.SetActive(!inventoryUI.activeSelf);
+            activeItemDisplay.enabled = !inventoryUI.activeSelf;
+            PlayerRelated.MovementEnabled = !inventoryUI.activeSelf;
+            PlayerRelated.InteractionEnabled = !inventoryUI.activeSelf;
+            Cursor.lockState = activeItemDisplay.enabled ? CursorLockMode.Locked : CursorLockMode.None;
+            UpdateUI();
+            PlayerRelated.ShouldListenForUIOpenEvents = isDisplayed;
         }
 
         /// <summary>

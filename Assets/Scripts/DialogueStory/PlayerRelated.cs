@@ -14,12 +14,12 @@ namespace DialogueStory
         {
             get
             {
-                if (_player == null)
+                if (!_player)
                 {
                     _player = Object.FindObjectOfType<FirstPersonController>();
                 }
 
-                if (_player == null)
+                if (!_player)
                 {
                     Debug.LogWarning("._.");
                 }
@@ -27,25 +27,16 @@ namespace DialogueStory
                 return _player;
             }
         }
-        
+
         /// <summary>
         /// If true, the player can move
         /// </summary>
         public static bool MovementEnabled
         {
-            get
-            {
-                Debug.Log("GetPlayerMovementEnabled called: " + player.movementEnabled);
-                return player.movementEnabled;
-            }
-
-            set
-            {
-                Debug.Log("SetPlayerMovementEnabled called: " + value);
-                player.movementEnabled = value;
-            }
+            get => player.movementEnabled;
+            set => player.movementEnabled = value;
         }
-        
+
         /// <summary>
         /// If true, the player can interact
         ///
@@ -53,19 +44,16 @@ namespace DialogueStory
         /// </summary>
         public static bool InteractionEnabled
         {
-            get
-            {
-                Debug.Log("GetPlayerInteractionEnabled called: " + _interactionEnabled);
-                return _interactionEnabled;
-            }
-
-            set
-            {
-                Debug.Log("SetPlayerInteractionEnabled called: " + value);
-                _interactionEnabled = value;
-            }
+            get => _interactionEnabled;
+            set => _interactionEnabled = value;
         }
-
+        
         private static bool _interactionEnabled = true;
+
+        public static bool ShouldListenForUIOpenEvents
+        {
+            get => player.shouldListenToUIEvents;
+            set => player.shouldListenToUIEvents = value;
+        }
     }
 }

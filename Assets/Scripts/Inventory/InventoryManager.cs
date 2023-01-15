@@ -38,9 +38,6 @@ namespace Inventory
         [Tooltip("Runs on item added/removed.")]
         public UnityEvent onItemChanged = new UnityEvent();
 
-        [Min(0)] [Tooltip("Maximum number of items in inventory.")]
-        public int space = 20;
-
         [Tooltip("List of items in inventory.")]
         public List<Item> items = new List<Item>();
 
@@ -72,6 +69,11 @@ namespace Inventory
                 if (indexOfSelection == items.Count-1) return items[0];
                 return items[indexOfSelection+1];
             }
+        }
+
+        public void Deequip()
+        {
+            indexOfSelection = -1; // prayge
         }
 
         public void ChangeSelectedIndex(bool increment)
@@ -108,19 +110,12 @@ namespace Inventory
         /// </summary>
         /// <param name="item">Item to add</param>
         /// <returns>Whether or not the item was successfully added</returns>
-        public bool Add(Item item)
+        public void Add(Item item)
         {
-            if (item == null) return false;
-            if (item.isDefaultItem) return true;
-            if (items.Count >= space)
-            {
-                Debug.Log("NO SPACE IN INVENTORY");
-                return false;
-            }
+            if (item == null) return;
 
             items.Add(item);
             onItemChanged.Invoke();
-            return true;
         }
 
         /// <summary>
