@@ -16,6 +16,7 @@ namespace SymbolBook
         public TMP_InputField description;
 
         public Image image;
+        public bool ignore;
         private StarterAssetsInputs _input;
         private int index = 0;
         private Symbol[] _symbols;
@@ -27,10 +28,13 @@ namespace SymbolBook
             _input = FindObjectOfType<StarterAssetsInputs>();
             _symbols = Resources.LoadAll<Symbol>(allSymbolsPath);
             if (ui) ui.SetActive(false);
+
+            ignore = true;
         }
 
         private void Update()
         {
+            if (ignore) return;
             if (!_input.symbolBook) return;
             bool isDisplayed = ui.activeSelf;
             _input.symbolBook = false;
@@ -75,5 +79,6 @@ namespace SymbolBook
             index--;
             UpdateUI();
         }
+
     }
 }

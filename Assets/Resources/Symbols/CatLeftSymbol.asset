@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: CatLeftSymbol
   m_EditorClassIdentifier: 
   symbolName: CatLeft
-  playerSymbolName: 
   image: {fileID: 21300000, guid: af128cd02a1a6d948b7816bd97b6c156, type: 3}
-  playerNotes: 
+  given: 1

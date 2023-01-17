@@ -11,11 +11,14 @@ namespace SymbolBook
     {
         [Tooltip("Name of Symbol (hidden to user)")]
         public string symbolName = "New Symbol";
-        [Tooltip("Symbol Name from user"), NonSerialized]
+        [Tooltip("Symbol Name from user")]
         public string PlayerSymbolName = "";
         [Tooltip("Take a wild guess")]
         public Sprite image;
-        [TextArea, Tooltip("Player's notes"), NonSerialized]
+        [TextArea, Tooltip("Player's notes")]
         public string PlayerNotes = "";
+
+        [Tooltip("Check if part of given symbol used to solve unknown ones")]
+        public bool given;
     }
 }

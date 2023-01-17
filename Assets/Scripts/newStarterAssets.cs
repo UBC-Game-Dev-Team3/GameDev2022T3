@@ -89,6 +89,15 @@ public partial class @NewStarterAssets : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SymbolBook"",
+                    ""type"": ""Button"",
+                    ""id"": ""2be68c5f-5b9e-4be6-ae35-e57a6fb7a290"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -300,6 +309,17 @@ public partial class @NewStarterAssets : IInputActionCollection2, IDisposable
                     ""action"": ""Scroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fdc59359-5f69-48d4-ad6d-f6b1e1cf6a5d"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""SymbolBook"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -363,6 +383,7 @@ public partial class @NewStarterAssets : IInputActionCollection2, IDisposable
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_Scroll = m_Player.FindAction("Scroll", throwIfNotFound: true);
         m_Player_Select = m_Player.FindAction("Select", throwIfNotFound: true);
+        m_Player_SymbolBook = m_Player.FindAction("SymbolBook", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -429,6 +450,7 @@ public partial class @NewStarterAssets : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_Scroll;
     private readonly InputAction m_Player_Select;
+    private readonly InputAction m_Player_SymbolBook;
     public struct PlayerActions
     {
         private @NewStarterAssets m_Wrapper;
@@ -440,6 +462,7 @@ public partial class @NewStarterAssets : IInputActionCollection2, IDisposable
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @Scroll => m_Wrapper.m_Player_Scroll;
         public InputAction @Select => m_Wrapper.m_Player_Select;
+        public InputAction @SymbolBook => m_Wrapper.m_Player_SymbolBook;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -470,6 +493,9 @@ public partial class @NewStarterAssets : IInputActionCollection2, IDisposable
                 @Select.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
                 @Select.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
                 @Select.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
+                @SymbolBook.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSymbolBook;
+                @SymbolBook.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSymbolBook;
+                @SymbolBook.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSymbolBook;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -495,6 +521,9 @@ public partial class @NewStarterAssets : IInputActionCollection2, IDisposable
                 @Select.started += instance.OnSelect;
                 @Select.performed += instance.OnSelect;
                 @Select.canceled += instance.OnSelect;
+                @SymbolBook.started += instance.OnSymbolBook;
+                @SymbolBook.performed += instance.OnSymbolBook;
+                @SymbolBook.canceled += instance.OnSymbolBook;
             }
         }
     }
@@ -544,5 +573,6 @@ public partial class @NewStarterAssets : IInputActionCollection2, IDisposable
         void OnInventory(InputAction.CallbackContext context);
         void OnScroll(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
+        void OnSymbolBook(InputAction.CallbackContext context);
     }
 }
