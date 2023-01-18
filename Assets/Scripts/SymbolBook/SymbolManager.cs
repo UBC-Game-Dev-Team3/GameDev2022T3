@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace SymbolBook
@@ -33,6 +35,12 @@ namespace SymbolBook
         [Tooltip("List of symbols.")]
         public Symbol[] symbols = Array.Empty<Symbol>();
 
+        [NonSerialized]
+        public Dictionary<string, Symbol> SymbolLookup = new();
+
+        [NonSerialized]
+        public Dictionary<string, List<Symbol>> AppearsInLookup = new();
+
         /// <summary>
         ///     On awake, set this to private static instance and load the symbols.
         /// </summary>
@@ -43,6 +51,58 @@ namespace SymbolBook
             else _privateStaticInstance = this;
             
             symbols = Resources.LoadAll<Symbol>(allSymbolsPath);
+            foreach (Symbol s in symbols)
+            {
+                s.SeenByPlayer = s.startSeen;
+            }
+            SymbolLookup = symbols.ToDictionary(symbol => symbol.symbolName, symbol => symbol);
+            ComputeAppearsIn();
+        }
+
+        private void ComputeAppearsIn()
+        {
+            AppearsInLookup.Clear();
+            foreach (Symbol s in symbols)
+            {
+                if (!AppearsInLookup.ContainsKey(s.symbolName))
+                {
+                    AppearsInLookup[s.symbolName] = new List<Symbol> {s};
+                }
+
+                if (s.contents == null || s.contents.Length == 0) continue;
+
+                foreach (Symbol child in s.contents)
+                {
+                    if (!AppearsInLookup.ContainsKey(child.symbolName))
+                    {
+                        AppearsInLookup[child.symbolName] = new List<Symbol> {child};
+                    }
+                    AppearsInLookup[child.symbolName].Add(s);
+                }
+            }
+        }
+
+        public int SymbolIndex(string s)
+        {
+            for (int i = 0; i < symbols.Length; i++)
+            {
+                if (symbols[i] != null && symbols[i].symbolName == s)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        public Symbol[] SeenSymbols()
+        {
+            return symbols.Where(s => s != null && s.SeenByPlayer).ToArray();
+        }
+        
+        public Symbol[] SeenParents(Symbol symbol)
+        {
+            return AppearsInLookup[symbol.symbolName].Where(s => s != null && s.SeenByPlayer).ToArray();
         }
     }
 }

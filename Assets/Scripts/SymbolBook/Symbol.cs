@@ -11,11 +11,25 @@ namespace SymbolBook
     {
         [Tooltip("Name of Symbol (hidden to user)")]
         public string symbolName = "New Symbol";
-        [Tooltip("Symbol Name from user"), NonSerialized]
+        /// <summary>
+        /// Symbol name given by the user. Is likely incorrect.
+        /// </summary>
+        [NonSerialized]
         public string PlayerSymbolName = "";
         [Tooltip("Take a wild guess")]
         public Sprite image;
-        [TextArea, Tooltip("Player's notes"), NonSerialized]
+        /// <summary>
+        /// Player notes written by the user. Is also likely incorrect.
+        /// </summary>
+        [NonSerialized]
         public string PlayerNotes = "";
+        [Tooltip("Whether this starts seen.")]
+        public bool startSeen; 
+        /// <summary>
+        /// Whether the player saw this.
+        /// </summary>
+        [NonSerialized] public bool SeenByPlayer;
+        [Tooltip("List of Symbols this Makes Up")]
+        public Symbol[] contents;
     }
 }

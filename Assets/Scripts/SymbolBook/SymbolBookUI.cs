@@ -15,6 +15,8 @@ namespace SymbolBook
         public TMP_InputField description;
 
         public Image image;
+        public GridLayoutGroup appearedIn;
+        public GameObject gridPrefab;
         private StarterAssetsInputs _input;
         private int index = 0;
         private SymbolManager _manager;
@@ -54,24 +56,36 @@ namespace SymbolBook
         /// </summary>
         public void UpdateUI()
         {
-            nameField.text = _manager.symbols[index].PlayerSymbolName;
-            description.text = _manager.symbols[index].PlayerNotes;
-            image.sprite = _manager.symbols[index].image;
-        }
-        
-        public void OnRightClicked()
-        {
-            SaveToObject();
-            if (index == _manager.symbols.Length - 1) index = -1;
-            index++;
-            UpdateUI();
+            Symbol symbol = _manager.symbols[index];
+            nameField.text = symbol.PlayerSymbolName;
+            description.text = symbol.PlayerNotes;
+            image.sprite = symbol.image;
+            int children = appearedIn.transform.childCount;
+            Symbol[] parents = _manager.SeenParents(symbol);
+            int desiredChildren = parents.Length;
+            if (desiredChildren > children)
+            {
+                Debug.LogError("Too many children: got " + desiredChildren + ", had " + children);
+            }
+            Debug.LogWarning(desiredChildren);
+            for (int i = 0; i < desiredChildren; i++)
+            {
+                SymbolBookButton button = appearedIn.transform.GetChild(i).GetComponent<SymbolBookButton>();
+                button.gameObject.SetActive(true);
+                button.DisplayedSymbol = parents[i];
+                button.ui = this;
+            }
+
+            for (int i = desiredChildren; i < children; i++)
+            {
+                appearedIn.transform.GetChild(i).gameObject.SetActive(false);
+            }
         }
 
-        public void OnLeftClicked()
+        public void OnButtonClick(string newSymbolName)
         {
             SaveToObject();
-            if (index == 0) index = _manager.symbols.Length;
-            index--;
+            index = _manager.SymbolIndex(newSymbolName);
             UpdateUI();
         }
     }
