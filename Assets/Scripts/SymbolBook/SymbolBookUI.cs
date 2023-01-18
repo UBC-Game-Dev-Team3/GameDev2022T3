@@ -11,6 +11,7 @@ namespace SymbolBook
         public GameObject ui;
         public GameObject scroll;
         public GameObject scrollContent;
+        public GameObject scrollPrefab;
         
         public TMP_InputField nameField;
 
@@ -63,6 +64,26 @@ namespace SymbolBook
         /// </summary>
         public void UpdateUI()
         {
+            int scrollChild = scrollContent.transform.childCount;
+            Symbol[] scrollSymbols = _manager.SeenSymbols();
+            int desiredScrollChild = scrollSymbols.Length;
+            for (int i = scrollChild; i > desiredScrollChild; i--)
+            {
+                Destroy(scrollContent.transform.GetChild(i).gameObject);
+            }
+
+            for (int i = scrollChild; i < desiredScrollChild; i++)
+            {
+                Instantiate(scrollPrefab, scrollContent.transform);
+            }
+
+            for (int i = 0; i < desiredScrollChild; i++)
+            {
+                SymbolBookButton button = scrollContent.transform.GetChild(i).GetComponent<SymbolBookButton>();
+                button.DisplayedSymbol = scrollSymbols[i];
+                button.ui = this;
+            }
+
             Symbol symbol = _manager.symbols[index];
             nameField.text = symbol.PlayerSymbolName;
             description.text = symbol.PlayerNotes;
