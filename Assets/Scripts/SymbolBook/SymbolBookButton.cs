@@ -16,8 +16,8 @@ namespace SymbolBook
             {
                 _symbol = value;
                 sprite.sprite = _symbol.image;
-                text.text = _symbol.PlayerSymbolName;
-                Debug.Log("HEHE: SETTING TEXT TO" + text.text);
+                if (text != null)
+                    text.text = _symbol.PlayerSymbolName;
             }
         }
 
@@ -29,8 +29,9 @@ namespace SymbolBook
         {
             if (_symbol == null) return;
             sprite.sprite = _symbol.image;
-            text.text = _symbol.PlayerSymbolName;
-            Debug.Log("HEHE: SETTING TEXT TO" + text.text);
+            
+            if (text != null)
+                text.text = _symbol.PlayerSymbolName;
         }
         
         public void OnButtonClick()

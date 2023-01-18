@@ -9,7 +9,9 @@ namespace SymbolBook
     public class SymbolBookUI : MonoBehaviour
     {
         public GameObject ui;
-
+        public GameObject scroll;
+        public GameObject scrollContent;
+        
         public TMP_InputField nameField;
 
         public TMP_InputField description;
@@ -27,7 +29,11 @@ namespace SymbolBook
         {
             _input = FindObjectOfType<StarterAssetsInputs>();
             _manager = SymbolManager.Instance;
-            if (ui) ui.SetActive(false);
+            if (ui)
+            {
+                ui.SetActive(false);
+                scroll.SetActive(false);
+            }
         }
 
         private void Update()
@@ -37,6 +43,7 @@ namespace SymbolBook
             _input.symbolBook = false;
             if ((!isDisplayed && !PlayerRelated.ShouldListenForUIOpenEvents) || (nameField.isFocused || description.isFocused)) return;
             ui.SetActive(!isDisplayed);
+            scroll.SetActive(!isDisplayed);
             PlayerRelated.MovementEnabled = isDisplayed;
             PlayerRelated.InteractionEnabled = isDisplayed;
             Cursor.lockState = isDisplayed ? CursorLockMode.Locked : CursorLockMode.None;
@@ -67,7 +74,6 @@ namespace SymbolBook
             {
                 Debug.LogError("Too many children: got " + desiredChildren + ", had " + children);
             }
-            Debug.LogWarning(desiredChildren);
             for (int i = 0; i < desiredChildren; i++)
             {
                 SymbolBookButton button = appearedIn.transform.GetChild(i).GetComponent<SymbolBookButton>();
