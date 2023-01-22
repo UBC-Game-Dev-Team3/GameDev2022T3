@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b252f15631f4b2e8d4717fa43569ba5, type: 3}
+  m_Name: CatHydra
+  m_EditorClassIdentifier: 
+  isWord: 1
+  symbolName: Cat Hydra
+  image: {fileID: 0}
+  startSeen: 1
+  contents:
+  - {fileID: 11400000, guid: 9a2f7977951a7ed4a856cd85fed0cdbc, type: 2}
+  - {fileID: 11400000, guid: a460bd2cf81869e4b99d06ec71f2697a, type: 2}
+  - {fileID: 11400000, guid: 3e88f40a933da3247bd41f8eb8585fc3, type: 2}

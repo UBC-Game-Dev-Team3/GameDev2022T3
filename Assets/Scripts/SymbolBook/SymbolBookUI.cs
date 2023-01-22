@@ -67,7 +67,7 @@ namespace SymbolBook
             int scrollChild = scrollContent.transform.childCount;
             Symbol[] scrollSymbols = _manager.SeenSymbols();
             int desiredScrollChild = scrollSymbols.Length;
-            for (int i = scrollChild; i > desiredScrollChild; i--)
+            for (int i = scrollChild-1; i >= desiredScrollChild; i--)
             {
                 Destroy(scrollContent.transform.GetChild(i).gameObject);
             }
@@ -87,7 +87,7 @@ namespace SymbolBook
             Symbol symbol = _manager.symbols[index];
             nameField.text = symbol.PlayerSymbolName;
             description.text = symbol.PlayerNotes;
-            image.sprite = symbol.image;
+            symbol.Render(image.transform.gameObject,250, false);
             int children = appearedIn.transform.childCount;
             Symbol[] parents = _manager.SeenParents(symbol);
             int desiredChildren = parents.Length;

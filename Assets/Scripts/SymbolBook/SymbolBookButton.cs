@@ -1,5 +1,6 @@
 ﻿using System;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,9 +16,9 @@ namespace SymbolBook
             set
             {
                 _symbol = value;
-                sprite.sprite = _symbol.image;
-                if (text != null)
-                    text.text = _symbol.PlayerSymbolName;
+                _symbol.Render(sprite.transform.gameObject, 100);
+                if (text == null) return;
+                text.text = string.IsNullOrWhiteSpace(_symbol.PlayerSymbolName) ? "???" : _symbol.PlayerSymbolName;
             }
         }
 
