@@ -21,7 +21,7 @@ namespace SymbolBook
         public GridLayoutGroup appearedIn;
         public GameObject gridPrefab;
         private StarterAssetsInputs _input;
-        private int index = 0;
+        private int _index;
         private SymbolManager _manager;
         /// <summary>
         ///     On awake, find singleton inventory instance and disable the UI.
@@ -55,8 +55,8 @@ namespace SymbolBook
 
         private void SaveToObject()
         {
-            _manager.symbols[index].PlayerSymbolName = nameField.text;
-            _manager.symbols[index].PlayerNotes = description.text;
+            _manager.symbols[_index].PlayerSymbolName = nameField.text;
+            _manager.symbols[_index].PlayerNotes = description.text;
         }
 
         /// <summary>
@@ -84,17 +84,22 @@ namespace SymbolBook
                 button.ui = this;
             }
 
-            Symbol symbol = _manager.symbols[index];
+            Symbol symbol = _manager.symbols[_index];
             nameField.text = symbol.PlayerSymbolName;
             description.text = symbol.PlayerNotes;
             symbol.Render(image.transform.gameObject,250, false);
             int children = appearedIn.transform.childCount;
             Symbol[] parents = _manager.SeenParents(symbol);
             int desiredChildren = parents.Length;
-            if (desiredChildren > children)
+            for (int i = children - 1; i >= desiredChildren; i--)
             {
-                Debug.LogError("Too many children: got " + desiredChildren + ", had " + children);
+                Destroy(appearedIn.transform.GetChild(i).gameObject);
             }
+            for (int i = children; i < desiredChildren; i++)
+            {
+                Instantiate(gridPrefab, appearedIn.transform);
+            }
+            
             for (int i = 0; i < desiredChildren; i++)
             {
                 SymbolBookButton button = appearedIn.transform.GetChild(i).GetComponent<SymbolBookButton>();
@@ -102,17 +107,12 @@ namespace SymbolBook
                 button.DisplayedSymbol = parents[i];
                 button.ui = this;
             }
-
-            for (int i = desiredChildren; i < children; i++)
-            {
-                appearedIn.transform.GetChild(i).gameObject.SetActive(false);
-            }
         }
 
         public void OnButtonClick(string newSymbolName)
         {
             SaveToObject();
-            index = _manager.SymbolIndex(newSymbolName);
+            _index = _manager.SymbolIndex(newSymbolName);
             UpdateUI();
         }
     }
