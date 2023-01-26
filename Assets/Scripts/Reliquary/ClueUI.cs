@@ -1,6 +1,5 @@
+using DialogueStory;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Util;
 
 namespace Reliquary
 {
@@ -35,6 +34,9 @@ namespace Reliquary
             clueUI.SetActive(false);
             reliquaryUI.SetActive(false);
             symbolselectUI.SetActive(false);
+            PlayerRelated.ShouldListenForUIOpenEvents = true;
+            PlayerRelated.MovementEnabled = true;
+            PlayerRelated.InteractionEnabled = true;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible= false;
         }

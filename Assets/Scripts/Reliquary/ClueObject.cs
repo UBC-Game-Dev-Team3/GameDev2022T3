@@ -32,6 +32,8 @@ namespace Reliquary
 
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            PlayerRelated.MovementEnabled = false;
+            PlayerRelated.InteractionEnabled = false;
             PlayerRelated.ShouldListenForUIOpenEvents = false;
             ClueUI.Instance.clueUI.SetActive(true);
             selected = true;

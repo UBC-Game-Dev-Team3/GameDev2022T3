@@ -14,6 +14,7 @@ namespace StarterAssets
 		public bool sprint;
 		public bool inventory;
 		public bool symbolBook;
+		public bool select;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -51,6 +52,11 @@ namespace StarterAssets
 			SymbolBookInput(value.isPressed);
 		}
 
+		public void OnSelect(InputValue value)
+		{
+			SelectInput(value.isPressed);
+		}
+
 		public void OnSprint(InputValue value)
 		{
 			SprintInput(value.isPressed);
@@ -81,6 +87,11 @@ namespace StarterAssets
 		public void SymbolBookInput(bool newSymbolBookState)
 		{
 			symbolBook = newSymbolBookState;
+		}
+
+		public void SelectInput(bool newSelectState)
+		{
+			select = newSelectState;
 		}
 		
 		public void SprintInput(bool newSprintState)

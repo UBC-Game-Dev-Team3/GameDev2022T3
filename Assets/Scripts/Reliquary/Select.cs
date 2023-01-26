@@ -1,10 +1,10 @@
+using StarterAssets;
 using TMPro;
 using UnityEngine;
 using Util;
 
 namespace Reliquary
 {
-    [RequireComponent(typeof(NewStarterAssets))]
     public class Select : MonoBehaviour
     {
         public Camera cm;
@@ -13,31 +13,17 @@ namespace Reliquary
         public float viewRange = 15f;
 
         private GameObject _selectedGameObject;
-        //private StarterAssetsInputs input;
-        NewStarterAssets _inputActions;
+
+        private StarterAssetsInputs _input;
+
         private void Awake()
         {
-            Cursor.visible = false;
-            _inputActions= new NewStarterAssets();
-            _inputActions.Player.Select.performed += ctx => select_object();
+            _input = FindObjectOfType<StarterAssetsInputs>();
         }
 
-        private void OnEnable()
+        private void Update()
         {
-            _inputActions.Player.Enable();
-        }
-
-        private void OnDisable()
-        {
-            _inputActions.Player.Disable();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            RaycastHit hitInfo;
-
-            if (Physics.Raycast(cm.transform.position, cm.transform.forward, out hitInfo, viewRange))
+            if (Physics.Raycast(cm.transform.position, cm.transform.forward, out RaycastHit hitInfo, viewRange))
             {
                 if ((hitInfo.collider.gameObject.GetComponent<Interactable>()))
                 {
@@ -55,18 +41,14 @@ namespace Reliquary
                 itemName.text = string.Empty;
             }
 
-        }
-
-        /// <summary>
-        /// On left button mouse click
-        /// </summary>
-        void select_object()
-        {
+            if (!_input.select) return;
             if (_selectedGameObject)
             {
                 Debug.Log(_selectedGameObject.transform.name);
                 _selectedGameObject.GetComponent<Interactable>().Interact(this, null);
             }
+
+            _input.select = false;
         }
     }
 }
