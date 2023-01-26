@@ -1,20 +1,21 @@
 using SymbolBook;
 using UnityEngine;
+using Util;
 
-namespace Util {
+namespace Reliquary {
     public class Reliquary : Interactable
     {
         [SerializeField] private Puzzle puzzle;
 
-        private Puzzle_slot[] p_slots;
-        private Answer_slot[] a_slots;
+        private PuzzleSlot[] _pSlots;
+        private AnswerSlot[] _aSlots;
 
         private void Start()
         {
-            if (Clue_UI.instance != null)
+            if (ClueUI.Instance != null)
             {
-                p_slots = Clue_UI.instance.puzzle_parent.GetComponentsInChildren<Puzzle_slot>();
-                a_slots = Clue_UI.instance.answer_parent.GetComponentsInChildren<Answer_slot>();
+                _pSlots = ClueUI.Instance.puzzleParent.GetComponentsInChildren<PuzzleSlot>();
+                _aSlots = ClueUI.Instance.answerParent.GetComponentsInChildren<AnswerSlot>();
             }
         }
 
@@ -30,14 +31,14 @@ namespace Util {
         /// </summary>
         public void open_panel()
         {
-            for (var i = 0; i < p_slots.Length; i++)
+            for (var i = 0; i < _pSlots.Length; i++)
             {
-                p_slots[i].add_symbol(puzzle.puzzle_symbols[i]);
+                _pSlots[i].add_symbol(puzzle.puzzleSymbols[i]);
             }
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            Clue_UI.instance.reliquary_ui.SetActive(true);
+            ClueUI.Instance.reliquaryUI.SetActive(true);
         }
 
         /// <summary>
@@ -47,12 +48,12 @@ namespace Util {
         /// <param name="s"></param>
         public void set_answer_symbol(Symbol s)
         {
-            for(var i = 0; i < a_slots.Length; i++)
+            for(var i = 0; i < _aSlots.Length; i++)
             {
-                if (a_slots[i].pressed)
+                if (_aSlots[i].pressed)
                 {
-                    a_slots[i].pressed = false;
-                    a_slots[i].add_symbol(s);
+                    _aSlots[i].pressed = false;
+                    _aSlots[i].AddSymbol(s);
                 }
             }
         }
@@ -63,9 +64,9 @@ namespace Util {
         /// </summary>
         public void check_answer()
         {
-            for(var i = 0; i != puzzle.answer_symbols.Length; i++)
+            for(var i = 0; i != puzzle.answerSymbols.Length; i++)
             {
-                if (a_slots[i] != puzzle.answer_symbols[i])
+                if (_aSlots[i] != puzzle.answerSymbols[i])
                 {
                     Debug.Log(i + "th symbol wrong.");
                     return;

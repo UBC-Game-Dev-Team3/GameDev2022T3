@@ -1278,7 +1278,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1118810468}
         m_TargetAssemblyTypeName: Answer_slot, Assembly-CSharp
-        m_MethodName: open_select_ui
+        m_MethodName: OpenSelectUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -65898,7 +65898,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 100218179}
         m_TargetAssemblyTypeName: Answer_slot, Assembly-CSharp
-        m_MethodName: open_select_ui
+        m_MethodName: OpenSelectUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -66536,7 +66536,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 919164919}
         m_TargetAssemblyTypeName: Answer_slot, Assembly-CSharp
-        m_MethodName: open_select_ui
+        m_MethodName: OpenSelectUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
