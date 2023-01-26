@@ -27,7 +27,7 @@ namespace Reliquary
         {
             for(var i = 0; i < slots.Length; i++)
             {
-                slots[i].add_symbol(clue.symbols[i]);
+                slots[i].AddSymbol(clue.symbols[i]);
             }
 
             Cursor.visible = true;

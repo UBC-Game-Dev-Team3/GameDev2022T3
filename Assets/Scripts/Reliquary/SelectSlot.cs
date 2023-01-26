@@ -8,8 +8,8 @@ namespace Reliquary
 {
     public class SelectSlot : MonoBehaviour
     {
-        [FormerlySerializedAs("icon_button")] [SerializeField] private Button iconButton;
-        [FormerlySerializedAs("name_text")] [SerializeField] private TextMeshProUGUI nameText;
+        [SerializeField] private Button iconButton;
+        [SerializeField] private TextMeshProUGUI nameText;
         private Symbol _symbol;
         public bool selected = false;
 

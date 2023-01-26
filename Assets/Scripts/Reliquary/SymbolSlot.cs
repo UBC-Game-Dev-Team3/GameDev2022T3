@@ -1,17 +1,16 @@
 using SymbolBook;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Reliquary
 {
     public class SymbolSlot : MonoBehaviour
     {
-        [FormerlySerializedAs("icon_button")] [SerializeField] private Button iconButton;
-        [FormerlySerializedAs("input_field")] [SerializeField] private TMP_InputField inputField;
-        [FormerlySerializedAs("name_text")] [SerializeField] private TextMeshProUGUI nameText;
-        [FormerlySerializedAs("input_notes")] [SerializeField] private TMP_InputField inputNotes;
+        [SerializeField] private Button iconButton;
+        [SerializeField] private TMP_InputField inputField;
+        [SerializeField] private TextMeshProUGUI nameText;
+        [SerializeField] private TMP_InputField inputNotes;
         private Symbol _symbol;
         public bool selected = false;
 
@@ -19,7 +18,7 @@ namespace Reliquary
         /// Fill in slot with symbol and description if given
         /// </summary>
         /// <param name="s"></param>
-        public void add_symbol(Symbol s)
+        public void AddSymbol(Symbol s)
         {
             _symbol = s;
             iconButton.GetComponent<Image>().sprite = s.image;
@@ -43,13 +42,13 @@ namespace Reliquary
             iconButton.GetComponent<Image>().color = Color.green;
         }
 
-        public string get_name()
+        public string GetName()
         {
             return inputField.text;
         }
 
 
-        public string get_notes()
+        public string GetNotes()
         {
             return inputNotes.text;
         }
@@ -57,7 +56,7 @@ namespace Reliquary
         /// <summary>
         /// Show warning if no symbol selected
         /// </summary>
-        public void show_warning()
+        public void ShowWarning()
         {
             inputNotes.text += "Please select a symbol first before recording.";
         }
@@ -66,7 +65,7 @@ namespace Reliquary
         /// <summary>
         /// Show added message
         /// </summary>
-        public void show_added()
+        public void ShowAdded()
         {
             inputNotes.text = "Name and notes added to symbol.";
         }

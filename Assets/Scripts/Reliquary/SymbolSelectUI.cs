@@ -6,17 +6,16 @@ namespace Reliquary
 {
     public class SymbolSelectUI : MonoBehaviour
     {
-
-        [FormerlySerializedAs("known_symbols")] [SerializeField] private Symbol[] knownSymbols;
+        [SerializeField] private Symbol[] knownSymbols;
         private SelectSlot[] _slots;
 
         private void Start()
         {
             _slots = ClueUI.Instance.selectParent.GetComponentsInChildren<SelectSlot>();
-            fill_symbols();
+            FillSymbols();
         }
 
-        public void fill_symbols()
+        private void FillSymbols()
         {
             for(var i = 0; i < _slots.Length; i++)
             {

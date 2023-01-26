@@ -7,7 +7,7 @@ namespace Reliquary
     public class ClueUI : MonoBehaviour
     {
         #region Singleton
-        public static ClueUI Instance;
+        public static ClueUI Instance { get; private set; }
         private void Awake()
         {
             if(Instance != null)
@@ -19,13 +19,13 @@ namespace Reliquary
         }
         #endregion
 
-        [FormerlySerializedAs("clue_ui")] public GameObject clueUI;
-        [FormerlySerializedAs("reliquary_ui")] public GameObject reliquaryUI;
-        [FormerlySerializedAs("symbolselect_ui")] public GameObject symbolselectUI;
-        [FormerlySerializedAs("symbol_parent")] public Transform symbolParent;
-        [FormerlySerializedAs("puzzle_parent")] public Transform puzzleParent;
-        [FormerlySerializedAs("answer_parent")] public Transform answerParent;
-        [FormerlySerializedAs("select_parent")] public Transform selectParent;
+        public GameObject clueUI;
+        public GameObject reliquaryUI;
+        public GameObject symbolselectUI;
+        public Transform symbolParent;
+        public Transform puzzleParent;
+        public Transform answerParent;
+        public Transform selectParent;
 
         /// <summary>
         /// On close button close
@@ -64,8 +64,8 @@ namespace Reliquary
                     selected = true;
                     if(clueObjects[index].clue.symbols[i] != null)
                     {
-                        clueObjects[index].clue.symbols[i].PlayerSymbolName = clueObjects[index].slots[i].get_name();
-                        clueObjects[index].clue.symbols[i].PlayerNotes = clueObjects[index].slots[i].get_notes();
+                        clueObjects[index].clue.symbols[i].PlayerSymbolName = clueObjects[index].slots[i].GetName();
+                        clueObjects[index].clue.symbols[i].PlayerNotes = clueObjects[index].slots[i].GetNotes();
                     } else
                     {
                         Debug.LogWarning("The symbol selected in clue panel does not exits.");
@@ -76,10 +76,10 @@ namespace Reliquary
 
             if(!selected)
             {
-                clueObjects[index].slots[0].show_warning();
+                clueObjects[index].slots[0].ShowWarning();
             } else
             {
-                clueObjects[index].slots[0].show_added();
+                clueObjects[index].slots[0].ShowAdded();
             }
         }
 

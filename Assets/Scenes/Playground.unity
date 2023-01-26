@@ -178,10 +178,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def87fc9c41326c448c9c8d90ad9243b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon_button: {fileID: 914875348}
-  input_field: {fileID: 1392412776}
-  name_text: {fileID: 348545406}
-  input_notes: {fileID: 1026975860}
+  iconButton: {fileID: 914875348}
+  inputField: {fileID: 1392412776}
+  nameText: {fileID: 348545406}
+  inputNotes: {fileID: 1026975860}
   selected: 0
 --- !u!1 &63324377
 GameObject:
@@ -569,13 +569,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3556d8424aeb942ac336e20daf134b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clue_ui: {fileID: 1640668892}
-  reliquary_ui: {fileID: 1167768357}
-  symbolselect_ui: {fileID: 160702766}
-  symbol_parent: {fileID: 1183788959}
-  puzzle_parent: {fileID: 131448986}
-  answer_parent: {fileID: 1694692154}
-  select_parent: {fileID: 1143001922}
+  clueUI: {fileID: 1640668892}
+  reliquaryUI: {fileID: 1167768357}
+  symbolselectUI: {fileID: 160702766}
+  symbolParent: {fileID: 1183788959}
+  puzzleParent: {fileID: 131448986}
+  answerParent: {fileID: 1694692154}
+  selectParent: {fileID: 1143001922}
 --- !u!1 &100218177
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,7 +732,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.8387146, y: -123.80145}
+  m_AnchoredPosition: {x: -1.8387451, y: -123.80145}
   m_SizeDelta: {x: 23.2893, y: -247.6029}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &160702768
@@ -785,7 +785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c16e052b662fc45ba073cd507ab705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  known_symbols:
+  knownSymbols:
   - {fileID: 11400000, guid: 9a2f7977951a7ed4a856cd85fed0cdbc, type: 2}
   - {fileID: 11400000, guid: 3e88f40a933da3247bd41f8eb8585fc3, type: 2}
   - {fileID: 11400000, guid: a460bd2cf81869e4b99d06ec71f2697a, type: 2}
@@ -2115,10 +2115,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def87fc9c41326c448c9c8d90ad9243b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon_button: {fileID: 1460615974}
-  input_field: {fileID: 466593572}
-  name_text: {fileID: 1368157317}
-  input_notes: {fileID: 1026975860}
+  iconButton: {fileID: 1460615974}
+  inputField: {fileID: 466593572}
+  nameText: {fileID: 1368157317}
+  inputNotes: {fileID: 1026975860}
   selected: 0
 --- !u!1 &361862730
 GameObject:
@@ -2441,8 +2441,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ecc8cd781d45e9478021bb6d182e042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon_button: {fileID: 63324380}
-  name_text: {fileID: 414208895}
+  iconButton: {fileID: 63324380}
+  nameText: {fileID: 414208895}
   selected: 0
 --- !u!1 &445125164
 GameObject:
@@ -2724,8 +2724,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ecc8cd781d45e9478021bb6d182e042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon_button: {fileID: 767529809}
-  name_text: {fileID: 932054395}
+  iconButton: {fileID: 767529809}
+  nameText: {fileID: 932054395}
   selected: 0
 --- !u!1 &479532942
 GameObject:
@@ -3000,10 +3000,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def87fc9c41326c448c9c8d90ad9243b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon_button: {fileID: 938034989}
-  input_field: {fileID: 1245632942}
-  name_text: {fileID: 361862732}
-  input_notes: {fileID: 1026975860}
+  iconButton: {fileID: 938034989}
+  inputField: {fileID: 1245632942}
+  nameText: {fileID: 361862732}
+  inputNotes: {fileID: 1026975860}
   selected: 0
 --- !u!1 &582583877
 GameObject:
@@ -62422,7 +62422,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29786
+  m_Name: pb_Mesh30178
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -63424,10 +63424,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def87fc9c41326c448c9c8d90ad9243b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon_button: {fileID: 2101560974}
-  input_field: {fileID: 282041655}
-  name_text: {fileID: 868384249}
-  input_notes: {fileID: 1026975860}
+  iconButton: {fileID: 2101560974}
+  inputField: {fileID: 282041655}
+  nameText: {fileID: 868384249}
+  inputNotes: {fileID: 1026975860}
   selected: 0
 --- !u!1 &1354031438
 GameObject:
@@ -64017,7 +64017,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29500
+  m_Name: pb_Mesh29668
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -65404,8 +65404,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ecc8cd781d45e9478021bb6d182e042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon_button: {fileID: 202559456}
-  name_text: {fileID: 591861089}
+  iconButton: {fileID: 202559456}
+  nameText: {fileID: 591861089}
   selected: 0
 --- !u!1 &1816930816
 GameObject:
@@ -66635,8 +66635,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ecc8cd781d45e9478021bb6d182e042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon_button: {fileID: 582583882}
-  name_text: {fileID: 1044942736}
+  iconButton: {fileID: 582583882}
+  nameText: {fileID: 1044942736}
   selected: 0
 --- !u!1001 &2084445384
 PrefabInstance:
@@ -67490,8 +67490,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cm: {fileID: 60889539378096556}
-  item_name: {fileID: 1005647081}
-  view_range: 15
+  itemName: {fileID: 1005647081}
+  viewRange: 15
 --- !u!1 &2114283753834967212
 GameObject:
   m_ObjectHideFlags: 0

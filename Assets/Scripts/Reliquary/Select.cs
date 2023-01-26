@@ -1,19 +1,16 @@
-using StarterAssets;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 using Util;
 
-namespace StarterAssets
+namespace Reliquary
 {
     [RequireComponent(typeof(NewStarterAssets))]
     public class Select : MonoBehaviour
     {
         public Camera cm;
-        [FormerlySerializedAs("item_name")] public TextMeshProUGUI itemName;
+        public TextMeshProUGUI itemName;
 
-        [FormerlySerializedAs("view_range")] public float viewRange = 15f;
+        public float viewRange = 15f;
 
         private GameObject _selectedGameObject;
         //private StarterAssetsInputs input;
