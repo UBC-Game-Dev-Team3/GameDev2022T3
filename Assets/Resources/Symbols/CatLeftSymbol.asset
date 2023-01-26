@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CatLeftSymbol
   m_EditorClassIdentifier: 
   symbolName: CatLeft
-  playerSymbolName: 
   image: {fileID: 21300000, guid: af128cd02a1a6d948b7816bd97b6c156, type: 3}
-  playerNotes: 
+  startSeen: 1
+  contents:
+  - {fileID: 11400000, guid: a460bd2cf81869e4b99d06ec71f2697a, type: 2}
