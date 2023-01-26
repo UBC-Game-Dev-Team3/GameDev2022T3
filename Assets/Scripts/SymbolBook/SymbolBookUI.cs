@@ -1,4 +1,5 @@
-﻿using DialogueStory;
+﻿using System.Linq;
+using DialogueStory;
 using StarterAssets;
 using TMPro;
 using UnityEngine;
@@ -65,7 +66,7 @@ namespace SymbolBook
         public void UpdateUI()
         {
             int scrollChild = scrollContent.transform.childCount;
-            Symbol[] scrollSymbols = _manager.SeenSymbols();
+            Symbol[] scrollSymbols = _manager.SeenSymbols().Where(s => !s.isWord).ToArray();
             int desiredScrollChild = scrollSymbols.Length;
             for (int i = scrollChild-1; i >= desiredScrollChild; i--)
             {
