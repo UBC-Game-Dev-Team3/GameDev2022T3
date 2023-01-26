@@ -21,7 +21,6 @@ namespace SymbolBook
         public Image image;
         public GridLayoutGroup appearedIn;
         public GameObject gridPrefab;
-        public bool ignore;
         private StarterAssetsInputs _input;
         private int _index;
         private SymbolManager _manager;
@@ -37,13 +36,10 @@ namespace SymbolBook
                 ui.SetActive(false);
                 scroll.SetActive(false);
             }
-            
-            ignore = true;
         }
 
         private void Update()
         {
-            if (ignore) return;
             if (!_input.symbolBook) return;
             bool isDisplayed = ui.activeSelf;
             _input.symbolBook = false;
