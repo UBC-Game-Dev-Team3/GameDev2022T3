@@ -38,6 +38,12 @@ namespace SymbolBook
             }
         }
 
+        private void Start()
+        {
+            Symbol[] scrollSymbols = _manager.SeenSymbols().Where(s => !s.isWord).ToArray();
+            _index = _manager.SymbolIndex(scrollSymbols[0].symbolName);
+        }
+
         private void Update()
         {
             if (!_input.symbolBook) return;
