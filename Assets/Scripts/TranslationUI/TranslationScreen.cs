@@ -1,6 +1,6 @@
-using StarterAssets;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Util;
 
 namespace TranslationUI
@@ -19,10 +19,24 @@ namespace TranslationUI
         public TMP_Text InscriptionFlavorText;
         [Tooltip("UI object to enable on open")]
         public GameObject UI;
-        private StarterAssetsInputs _input;
+        [Tooltip("Tooltip Object UI")]
+        public GameObject tooltipUI;
+
+        private InputActionMap _actions;
         private void Awake()
         {
-            _input = FindObjectOfType<StarterAssetsInputs>();
+            _actions = FindObjectOfType<PlayerInput>().actions.FindActionMap("Player");
+            PlayerRelated.OnUIChangeDelegate += OnUIStateChange;
+        }
+        
+        private void CancelUI(InputAction.CallbackContext ctx)
+        {
+            OnCancelClick();
+        }
+
+        public void OnUIStateChange(bool newVisibility)
+        {
+            tooltipUI.SetActive(!newVisibility);
         }
 
         public void OnCancelClick()
@@ -39,12 +53,14 @@ namespace TranslationUI
         {
             PlayerRelated.TriggerUIClose();
             UI.SetActive(false);
+            _actions.FindAction("Select").performed -= CancelUI;
         }
 
         public void OpenUI()
         {
             PlayerRelated.TriggerUIOpen();
             UI.SetActive(true);
+            _actions.FindAction("Select").performed += CancelUI;
         }
     }
 }

@@ -1958,6 +1958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InscriptionFlavorText: {fileID: 1235848048564662817}
   UI: {fileID: 5120660528103345777}
+  tooltipUI: {fileID: 2020986313070021220}
 --- !u!1001 &2074155871831891012
 PrefabInstance:
   m_ObjectHideFlags: 0
