@@ -22,6 +22,7 @@ namespace TranslationUI
         [Tooltip("Tooltip Object UI")]
         public GameObject tooltipUI;
 
+        private TranslationPuzzle _puzzle;
         private InputActionMap _actions;
         private void Awake()
         {
@@ -56,11 +57,13 @@ namespace TranslationUI
             _actions.FindAction("Select").performed -= CancelUI;
         }
 
-        public void OpenUI()
+        public void OpenUI(TranslationPuzzle puzzle)
         {
+            _puzzle = puzzle;
             PlayerRelated.TriggerUIOpen();
             UI.SetActive(true);
             _actions.FindAction("Select").performed += CancelUI;
+            InscriptionFlavorText.text = _puzzle.objectName;
         }
     }
 }
