@@ -1531,8 +1531,8 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 500, y: 150}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &3856383409212261578
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1957,7 +1957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InscriptionFlavorText: {fileID: 1235848048564662817}
-  UI: {fileID: 0}
+  UI: {fileID: 5120660528103345777}
 --- !u!1001 &2074155871831891012
 PrefabInstance:
   m_ObjectHideFlags: 0

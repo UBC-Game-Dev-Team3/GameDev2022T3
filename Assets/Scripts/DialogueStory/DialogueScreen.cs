@@ -1,6 +1,7 @@
 ﻿using Singleton;
 using UnityEngine;
 using UnityEngine.UI;
+using Util;
 
 namespace DialogueStory
 {

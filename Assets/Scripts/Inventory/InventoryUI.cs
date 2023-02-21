@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Util;
 
 namespace Inventory
 {
@@ -42,7 +43,7 @@ namespace Inventory
         private void Awake()
         {
             _actions = FindObjectOfType<PlayerInput>().actions.FindActionMap("Player");
-            _actions.FindAction("Inventory").performed += _ => OnInventoryButtonPress();
+            _actions.FindAction("Inventory").performed += OnInventoryButtonPress;
             _inventoryManager = InventoryManager.Instance;
             _inventoryManager.onItemChanged.AddListener(UpdateUI);
             inventoryUI.SetActive(false);
@@ -55,20 +56,23 @@ namespace Inventory
             UpdateUI();
         }
 
+        private void OnDestroy()
+        {
+            _actions.FindAction("Inventory").performed -= OnInventoryButtonPress;
+        }
+
         /// <summary>
         ///     Runs on button press - display/hide the UI
         /// </summary>
-        private void OnInventoryButtonPress()
+        private void OnInventoryButtonPress(InputAction.CallbackContext ctx)
         {
             bool isDisplayed = inventoryUI.activeSelf;
             if (!isDisplayed && !PlayerRelated.ShouldListenForUIOpenEvents) return;
+            if (inventoryUI.activeSelf) PlayerRelated.TriggerUIClose();
+            else PlayerRelated.TriggerUIOpen();
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             activeItemDisplay.enabled = !inventoryUI.activeSelf;
-            PlayerRelated.MovementEnabled = !inventoryUI.activeSelf;
-            PlayerRelated.InteractionEnabled = !inventoryUI.activeSelf;
-            Cursor.lockState = activeItemDisplay.enabled ? CursorLockMode.Locked : CursorLockMode.None;
             UpdateUI();
-            PlayerRelated.ShouldListenForUIOpenEvents = isDisplayed;
         }
 
         /// <summary>

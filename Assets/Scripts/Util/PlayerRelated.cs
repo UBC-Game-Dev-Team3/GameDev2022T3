@@ -1,7 +1,8 @@
-﻿using StarterAssets;
+﻿using JetBrains.Annotations;
+using StarterAssets;
 using UnityEngine;
 
-namespace DialogueStory
+namespace Util
 {
     /// <summary>
     /// Hey uh I haven't yet *disabled* it so this is needed since I cba to do that part now
@@ -54,6 +55,34 @@ namespace DialogueStory
         {
             get => player.shouldListenToUIEvents;
             set => player.shouldListenToUIEvents = value;
+        }
+
+        public delegate void UIStateChangeDelegate(bool state);
+
+        [CanBeNull] public static UIStateChangeDelegate OnUIChangeDelegate;
+
+        /// <summary>
+        /// Sets all variables similar to that when a UI opens
+        /// </summary>
+        public static void TriggerUIOpen()
+        {
+            MovementEnabled = false;
+            InteractionEnabled = false;
+            ShouldListenForUIOpenEvents = false;
+            Cursor.lockState = CursorLockMode.None;
+            OnUIChangeDelegate?.Invoke(true);
+        }
+
+        /// <summary>
+        /// Sets all variables similar to that when a UI closes
+        /// </summary>
+        public static void TriggerUIClose()
+        {
+            MovementEnabled = true;
+            InteractionEnabled = true;
+            ShouldListenForUIOpenEvents = true;
+            OnUIChangeDelegate?.Invoke(false);
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }

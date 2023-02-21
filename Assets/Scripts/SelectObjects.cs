@@ -3,6 +3,7 @@ using TranslationUI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using Util;
 
 public class SelectObjects : MonoBehaviour
 {
@@ -17,7 +18,12 @@ public class SelectObjects : MonoBehaviour
     private void Awake()
     {
         _actions = FindObjectOfType<PlayerInput>().actions.FindActionMap("Player");
-        _actions.FindAction("Select").performed += _ => Select();
+        _actions.FindAction("Select").performed += Select;
+    }
+
+    private void OnDestroy()
+    {
+        _actions.FindAction("Select").performed -= Select;
     }
 
     private void OnEnable()
@@ -30,9 +36,9 @@ public class SelectObjects : MonoBehaviour
         _enabled = false;
     }
 
-    private void Select()
+    private void Select(InputAction.CallbackContext ctx)
     {
-        if (!_currentObj || !_enabled) return;
+        if (!_currentObj || !_enabled || !PlayerRelated.InteractionEnabled) return;
         _currentObj.Interact(this);
     }
 

@@ -1,8 +1,7 @@
-using System;
-using DialogueStory;
 using StarterAssets;
 using TMPro;
 using UnityEngine;
+using Util;
 
 namespace TranslationUI
 {
@@ -38,19 +37,13 @@ namespace TranslationUI
 
         public void CloseUI()
         {
-            PlayerRelated.MovementEnabled = true;
-            PlayerRelated.InteractionEnabled = true;
-            Cursor.lockState = CursorLockMode.Locked;
-            PlayerRelated.ShouldListenForUIOpenEvents = true;
+            PlayerRelated.TriggerUIClose();
             UI.SetActive(false);
         }
 
         public void OpenUI()
         {
-            PlayerRelated.MovementEnabled = false;
-            PlayerRelated.InteractionEnabled = false;
-            Cursor.lockState = CursorLockMode.None;
-            PlayerRelated.ShouldListenForUIOpenEvents = false;
+            PlayerRelated.TriggerUIOpen();
             UI.SetActive(true);
         }
     }

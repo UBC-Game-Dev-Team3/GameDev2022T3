@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Util;
 
 namespace SymbolBook
 {
@@ -30,7 +31,7 @@ namespace SymbolBook
         private void Awake()
         {
             _actions = FindObjectOfType<PlayerInput>().actions.FindActionMap("Player");
-            _actions.FindAction("SymbolBook").performed += _ => OnSymbolBookButtonPress();
+            _actions.FindAction("SymbolBook").performed += OnSymbolBookButtonPress;
             _manager = SymbolManager.Instance;
             if (ui)
             {
@@ -39,18 +40,21 @@ namespace SymbolBook
             }
         }
 
-        private void OnSymbolBookButtonPress()
+        private void OnDestroy()
+        {
+            _actions.FindAction("SymbolBook").performed -= OnSymbolBookButtonPress;
+        }
+
+        private void OnSymbolBookButtonPress(InputAction.CallbackContext ctx)
         {
             bool isDisplayed = ui.activeSelf;
             if ((!isDisplayed && !PlayerRelated.ShouldListenForUIOpenEvents) || (nameField.isFocused || description.isFocused)) return;
+            if (isDisplayed) PlayerRelated.TriggerUIClose();
+            else PlayerRelated.TriggerUIOpen();
             ui.SetActive(!isDisplayed);
             scroll.SetActive(!isDisplayed);
-            PlayerRelated.MovementEnabled = isDisplayed;
-            PlayerRelated.InteractionEnabled = isDisplayed;
-            Cursor.lockState = isDisplayed ? CursorLockMode.Locked : CursorLockMode.None;
             SaveToObject();
             UpdateUI();
-            PlayerRelated.ShouldListenForUIOpenEvents = isDisplayed;
         }
 
         private void Start()

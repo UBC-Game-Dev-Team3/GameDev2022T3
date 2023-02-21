@@ -14,6 +14,8 @@ namespace TranslationUI
         private Outline _outline;
         [Tooltip("Puzzle")]
         public TranslationPuzzle puzzle;
+        [Tooltip("Translation UI to enable")]
+        public TranslationScreen translationUI;
 
         public string TooltipText
         {
@@ -34,7 +36,7 @@ namespace TranslationUI
         public override void Interact(object src, params object[] args)
         {
             base.Interact(src, args);
-            Debug.Log("dkajfakldjfa");
+            translationUI.OpenUI();
         }
 
         public void Select()

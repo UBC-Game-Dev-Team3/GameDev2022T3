@@ -191,6 +191,18 @@ ReflectionProbe:
   m_UseOcclusionCulling: 1
   m_Importance: 1
   m_CustomBakedTexture: {fileID: 0}
+--- !u!114 &667045382 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 905922148153596755, guid: 041280250e970104b95fb88fbab7e411,
+    type: 3}
+  m_PrefabInstance: {fileID: 4012074586230353281}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61511b4b05cc93e4bb1b0364f076d4d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &746329221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -778,6 +790,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   puzzle: {fileID: 11400000, guid: 71fa831729dbd9d47914d16db93913ca, type: 2}
+  translationUI: {fileID: 667045382}
 --- !u!114 &1124990888
 MonoBehaviour:
   m_ObjectHideFlags: 0
