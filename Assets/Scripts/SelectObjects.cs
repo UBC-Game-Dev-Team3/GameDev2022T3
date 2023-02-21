@@ -1,41 +1,39 @@
-using StarterAssets;
 using TMPro;
+using TranslationUI;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Util;
+using UnityEngine.Serialization;
 
 public class SelectObjects : MonoBehaviour
 {
     public Camera cm;
-    public TextMeshProUGUI item_name;
+    [FormerlySerializedAs("item_name")] public TextMeshProUGUI itemNameUI;
    
-    public float view_range = 15f;
+    [FormerlySerializedAs("view_range")] public float viewRange = 15f;
     private SelectableObject _currentObj;
     private InputActionMap _actions;
+    private bool _enabled = true;
 
     private void Awake()
     {
-        PlayerInput input = GetComponent<PlayerInput>();
-        _actions = input.actions.FindActionMap("Player");
-        _actions.FindAction("Select").performed += ctx => Select();
+        _actions = FindObjectOfType<PlayerInput>().actions.FindActionMap("Player");
+        _actions.FindAction("Select").performed += _ => Select();
     }
 
     private void OnEnable()
     {
-        _actions.Enable();
+        _enabled = true;
     }
 
     private void OnDisable()
     {
-        _actions.Disable();
+        _enabled = false;
     }
 
     private void Select()
     {
-        if (_currentObj)
-        {
-            _currentObj.Interact(this);
-        }
+        if (!_currentObj || !_enabled) return;
+        _currentObj.Interact(this);
     }
 
     private RaycastHit _hitInfo;
@@ -43,10 +41,10 @@ public class SelectObjects : MonoBehaviour
     private void FixedUpdate()
     {
         SelectableObject previous = _currentObj;
-        if (!Physics.Raycast(cm.transform.position, cm.transform.forward, out _hitInfo, view_range))
+        if (!Physics.Raycast(cm.transform.position, cm.transform.forward, out _hitInfo, viewRange))
         {
             if (previous == null) return;
-            item_name.text = "";
+            itemNameUI.text = "";
             previous.Deselect();
 
             return;
@@ -55,13 +53,13 @@ public class SelectObjects : MonoBehaviour
         if (_currentObj == null)
         {
             if (previous == null) return;
-            item_name.text = "";
+            itemNameUI.text = "";
             previous.Deselect();
         } else if (_currentObj != previous)
         {
             if (previous != null) previous.Deselect();
 
-            item_name.text = _currentObj.ObjectName; //display item name
+            itemNameUI.text = _currentObj.TooltipText;
             _currentObj.Select();
         }
     }

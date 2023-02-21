@@ -1,7 +1,7 @@
 using DialogueStory;
-using StarterAssets;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Inventory
@@ -33,16 +33,16 @@ namespace Inventory
         public Item test;
         public Item test2;
         
-        
         private InventoryManager _inventoryManager;
-        private StarterAssetsInputs _input;
+        private InputActionMap _actions;
 
         /// <summary>
         ///     On awake, find singleton inventory instance and disable the UI.
         /// </summary>
         private void Awake()
         {
-            _input = FindObjectOfType<StarterAssetsInputs>();
+            _actions = FindObjectOfType<PlayerInput>().actions.FindActionMap("Player");
+            _actions.FindAction("Inventory").performed += _ => OnInventoryButtonPress();
             _inventoryManager = InventoryManager.Instance;
             _inventoryManager.onItemChanged.AddListener(UpdateUI);
             inventoryUI.SetActive(false);
@@ -56,13 +56,11 @@ namespace Inventory
         }
 
         /// <summary>
-        ///     Checks every frame as to whether or not the inventory should be set active.
+        ///     Runs on button press - display/hide the UI
         /// </summary>
-        private void Update()
+        private void OnInventoryButtonPress()
         {
-            if (!_input.inventory) return;
             bool isDisplayed = inventoryUI.activeSelf;
-            _input.inventory = false;
             if (!isDisplayed && !PlayerRelated.ShouldListenForUIOpenEvents) return;
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             activeItemDisplay.enabled = !inventoryUI.activeSelf;

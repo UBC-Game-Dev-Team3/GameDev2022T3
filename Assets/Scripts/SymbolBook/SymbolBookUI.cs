@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using DialogueStory;
-using StarterAssets;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace SymbolBook
@@ -21,7 +21,7 @@ namespace SymbolBook
         public Image image;
         public GridLayoutGroup appearedIn;
         public GameObject gridPrefab;
-        private StarterAssetsInputs _input;
+        private InputActionMap _actions;
         private int _index;
         private SymbolManager _manager;
         /// <summary>
@@ -29,7 +29,8 @@ namespace SymbolBook
         /// </summary>
         private void Awake()
         {
-            _input = FindObjectOfType<StarterAssetsInputs>();
+            _actions = FindObjectOfType<PlayerInput>().actions.FindActionMap("Player");
+            _actions.FindAction("SymbolBook").performed += _ => OnSymbolBookButtonPress();
             _manager = SymbolManager.Instance;
             if (ui)
             {
@@ -38,17 +39,9 @@ namespace SymbolBook
             }
         }
 
-        private void Start()
+        private void OnSymbolBookButtonPress()
         {
-            Symbol[] scrollSymbols = _manager.SeenSymbols().Where(s => !s.isWord).ToArray();
-            _index = _manager.SymbolIndex(scrollSymbols[0].symbolName);
-        }
-
-        private void Update()
-        {
-            if (!_input.symbolBook) return;
             bool isDisplayed = ui.activeSelf;
-            _input.symbolBook = false;
             if ((!isDisplayed && !PlayerRelated.ShouldListenForUIOpenEvents) || (nameField.isFocused || description.isFocused)) return;
             ui.SetActive(!isDisplayed);
             scroll.SetActive(!isDisplayed);
@@ -58,6 +51,12 @@ namespace SymbolBook
             SaveToObject();
             UpdateUI();
             PlayerRelated.ShouldListenForUIOpenEvents = isDisplayed;
+        }
+
+        private void Start()
+        {
+            Symbol[] scrollSymbols = _manager.SeenSymbols().Where(s => !s.isWord).ToArray();
+            _index = _manager.SymbolIndex(scrollSymbols[0].symbolName);
         }
 
         private void SaveToObject()

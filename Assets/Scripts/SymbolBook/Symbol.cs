@@ -10,6 +10,7 @@ namespace SymbolBook
     [CreateAssetMenu(fileName = "New Symbol", menuName = "SymbolBook/Symbol")]
     public class Symbol : ScriptableObject
     {
+        public static readonly string SymbolDefaultName = "???";
         [Tooltip("Whether this is a Word or a Normal Symbol")]
         public bool isWord = false;
         [Tooltip("Name of Symbol (hidden to user)")]
@@ -18,7 +19,7 @@ namespace SymbolBook
         /// Symbol name given by the user. Is likely incorrect.
         /// </summary>
         [NonSerialized]
-        public string PlayerSymbolName = "???";
+        public string PlayerSymbolName = SymbolDefaultName;
         [Tooltip("Take a wild guess")]
         public Sprite image;
         /// <summary>
