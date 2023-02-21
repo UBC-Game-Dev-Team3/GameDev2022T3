@@ -18,7 +18,7 @@ namespace SymbolBook
         /// Symbol name given by the user. Is likely incorrect.
         /// </summary>
         [NonSerialized]
-        public string PlayerSymbolName = "";
+        public string PlayerSymbolName = "???";
         [Tooltip("Take a wild guess")]
         public Sprite image;
         /// <summary>
