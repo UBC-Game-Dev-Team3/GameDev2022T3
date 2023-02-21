@@ -65,5 +65,10 @@ namespace TranslationUI
             _actions.FindAction("Select").performed += CancelUI;
             InscriptionFlavorText.text = _puzzle.objectName;
         }
+
+        public void OnButtonClick(string displayedSymbolSymbolName)
+        {
+            
+        }
     }
 }

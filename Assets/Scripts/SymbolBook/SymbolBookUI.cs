@@ -74,18 +74,10 @@ namespace SymbolBook
         /// </summary>
         public void UpdateUI()
         {
-            int scrollChild = scrollContent.transform.childCount;
             Symbol[] scrollSymbols = _manager.SeenSymbols().Where(s => !s.isWord).ToArray();
             int desiredScrollChild = scrollSymbols.Length;
-            for (int i = scrollChild-1; i >= desiredScrollChild; i--)
-            {
-                Destroy(scrollContent.transform.GetChild(i).gameObject);
-            }
-
-            for (int i = scrollChild; i < desiredScrollChild; i++)
-            {
-                Instantiate(scrollPrefab, scrollContent.transform);
-            }
+            
+            Utilities.InstantiateToLength(scrollPrefab, scrollContent.transform, desiredScrollChild);
 
             for (int i = 0; i < desiredScrollChild; i++)
             {
@@ -98,17 +90,9 @@ namespace SymbolBook
             nameField.text = symbol.PlayerSymbolName;
             description.text = symbol.PlayerNotes;
             symbol.Render(image.transform.gameObject,250, false);
-            int children = appearedIn.transform.childCount;
             Symbol[] parents = _manager.SeenParents(symbol);
             int desiredChildren = parents.Length;
-            for (int i = children - 1; i >= desiredChildren; i--)
-            {
-                Destroy(appearedIn.transform.GetChild(i).gameObject);
-            }
-            for (int i = children; i < desiredChildren; i++)
-            {
-                Instantiate(gridPrefab, appearedIn.transform);
-            }
+            Utilities.InstantiateToLength(gridPrefab, appearedIn.transform, desiredChildren);
             
             for (int i = 0; i < desiredChildren; i++)
             {
