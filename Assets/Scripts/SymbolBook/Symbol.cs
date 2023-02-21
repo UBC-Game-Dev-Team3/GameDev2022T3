@@ -81,7 +81,11 @@ namespace SymbolBook
                     rectTransform.localPosition = position;
                     xPos += imageChild.preferredWidth* scaleFactor/2;
                 }
-            } else if (sprite != null) sprite.sprite = image;
+            } else if (sprite != null)
+            {
+                sprite.preserveAspect = true;
+                sprite.sprite = image;
+            }
         }
     }
 }

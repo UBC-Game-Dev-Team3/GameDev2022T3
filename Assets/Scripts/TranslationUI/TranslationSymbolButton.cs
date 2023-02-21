@@ -18,7 +18,7 @@ namespace TranslationUI
                 _symbol = value;
                 _symbol.Render(sprite.transform.gameObject, 100);
                 if (text == null) return;
-                text.text = string.IsNullOrWhiteSpace(_symbol.PlayerSymbolName) ? "???" : _symbol.PlayerSymbolName;
+                text.text = string.IsNullOrWhiteSpace(_symbol.PlayerSymbolName) ? Symbol.SymbolDefaultName : _symbol.PlayerSymbolName;
             }
         }
 
@@ -33,6 +33,15 @@ namespace TranslationUI
             
             if (text != null)
                 text.text = _symbol.PlayerSymbolName;
+        }
+
+        public void UpdateFromHint(TranslationPuzzle.WordPair word)
+        {
+            if (string.IsNullOrWhiteSpace(word.hint)) return;
+            if (!string.IsNullOrWhiteSpace(_symbol.PlayerSymbolName) &&
+                _symbol.PlayerSymbolName != Symbol.SymbolDefaultName) return;
+            if (word.startKnown) text.text = word.hint;
+            else text.text = word.hint + '?';
         }
         
         public void OnButtonClick()
