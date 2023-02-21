@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b252f15631f4b2e8d4717fa43569ba5, type: 3}
+  m_Name: SymbolOwO
+  m_EditorClassIdentifier: 
+  isWord: 1
+  symbolName: OwO
+  image: {fileID: 0}
+  startSeen: 0
+  contents:
+  - {fileID: 11400000, guid: d1d0883d8b177f442b7d769fcca34202, type: 2}
+  - {fileID: 11400000, guid: dd5c4737d796ed54f8120a079cb4a929, type: 2}
+  - {fileID: 11400000, guid: d1d0883d8b177f442b7d769fcca34202, type: 2}
