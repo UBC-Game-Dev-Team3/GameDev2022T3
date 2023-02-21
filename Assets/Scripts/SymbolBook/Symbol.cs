@@ -59,27 +59,27 @@ namespace SymbolBook
 
                 float scaleFactor = 1;
                 float width = 0;
-                float xPos = 0;
                 for (int i = 0; i < desiredScrollChild; i++)
                 {
                     scaleFactor = Math.Min(scaleFactor, spriteSize / contents[i].image.rect.height);
                     width += contents[i].image.rect.width;
                 }
 
-                xPos = -(width / 2) * scaleFactor+spriteSize/2;
+                float xPos = -(width / 2) * scaleFactor;
                 for (int i = 0; i < desiredScrollChild; i++)
                 {
                     Transform child = sprite.transform.GetChild(i);
                     Image imageChild = child.GetComponent<Image>();
-                    RectTransform rectTransform = child.GetComponent<RectTransform>();
-                    rectTransform.sizeDelta = new Vector2(spriteSize, spriteSize);
                     imageChild.sprite = contents[i].image;
+                    RectTransform rectTransform = child.GetComponent<RectTransform>();
+                    rectTransform.sizeDelta = new Vector2(imageChild.preferredWidth*scaleFactor, spriteSize);
                     imageChild.raycastTarget = raycastTarget;
+                    xPos += imageChild.preferredWidth * scaleFactor / 2;
                     Vector3 position = rectTransform.localPosition;
                     float prev = position.x;
                     position += new Vector3(xPos - prev,0,0);
                     rectTransform.localPosition = position;
-                    xPos += contents[i].image.rect.width * scaleFactor;
+                    xPos += imageChild.preferredWidth* scaleFactor/2;
                 }
             } else if (sprite != null) sprite.sprite = image;
         }

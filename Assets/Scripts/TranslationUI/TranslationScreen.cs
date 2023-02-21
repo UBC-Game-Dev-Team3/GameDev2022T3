@@ -1,3 +1,5 @@
+using System.Linq;
+using SymbolBook;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,14 +9,6 @@ namespace TranslationUI
 {
     public class TranslationScreen : MonoBehaviour
     {
-        /// <summary>
-        /// Gets/sets inscription flavor name text
-        /// </summary>
-        public string InscriptionFlavorName
-        {
-            get => InscriptionFlavorText.text;
-            set => InscriptionFlavorText.text = value;
-        }
         [Tooltip("Inscription Flavor Text object")]
         public TMP_Text InscriptionFlavorText;
         [Tooltip("UI object to enable on open")]
@@ -22,6 +16,18 @@ namespace TranslationUI
         [Tooltip("Tooltip Object UI")]
         public GameObject tooltipUI;
 
+        [Tooltip("List of Words Parent")]
+        public Transform wordsTransform;
+        [Tooltip("List of Symbols Parent")]
+        public Transform symbolsTransform;
+        [Tooltip("List of Button Answers Transform")]
+        public Transform wordAnswersTransform;
+
+        [Tooltip("Prefab for Translation Buttons")]
+        public GameObject translationButtonPrefab;
+        [Tooltip("Prefab for Symbol UI")]
+        public GameObject symbolPrefab;
+        
         private TranslationPuzzle _puzzle;
         private InputActionMap _actions;
         private void Awake()
@@ -64,6 +70,15 @@ namespace TranslationUI
             UI.SetActive(true);
             _actions.FindAction("Select").performed += CancelUI;
             InscriptionFlavorText.text = _puzzle.objectName;
+            
+            Symbol[] words = _puzzle.words.Select(pair => pair.word).ToArray();
+            Utilities.InstantiateToLength(translationButtonPrefab,wordsTransform,words.Length);
+            for (int i = 0; i < words.Length; i++)
+            {
+                TranslationSymbolButton button = wordsTransform.GetChild(i).GetComponent<TranslationSymbolButton>();
+                button.DisplayedSymbol = words[i];
+                button.ui = this;
+            }
         }
 
         public void OnButtonClick(string displayedSymbolSymbolName)
