@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,7 @@ namespace SymbolBook
 {
     public class SymbolBookButton : MonoBehaviour
     {
+        [NonSerialized]
         public SymbolBookUI ui;
 
         public Symbol DisplayedSymbol

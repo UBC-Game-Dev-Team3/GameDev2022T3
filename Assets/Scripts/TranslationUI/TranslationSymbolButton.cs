@@ -1,4 +1,5 @@
-﻿using SymbolBook;
+﻿using System;
+using SymbolBook;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +8,7 @@ namespace TranslationUI
 {
     public class TranslationSymbolButton : MonoBehaviour
     {
-        
+        [NonSerialized]
         public TranslationScreen ui;
 
         public Symbol DisplayedSymbol
@@ -48,7 +49,7 @@ namespace TranslationUI
         {
             if (ui != null && DisplayedSymbol != null)
             {
-                ui.OnButtonClick(DisplayedSymbol.symbolName);
+                ui.OnSymbolClick(DisplayedSymbol.symbolName);
             }
         }
     }

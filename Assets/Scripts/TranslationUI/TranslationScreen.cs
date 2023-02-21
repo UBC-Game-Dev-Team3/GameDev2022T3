@@ -16,6 +16,8 @@ namespace TranslationUI
         public GameObject UI;
         [Tooltip("Tooltip Object UI")]
         public GameObject tooltipUI;
+        [Tooltip("Confirm button")]
+        public Button confirmButton;
 
         [Tooltip("List of Words Parent")]
         public Transform wordsTransform;
@@ -24,13 +26,16 @@ namespace TranslationUI
         [Tooltip("List of Button Answers Transform")]
         public Transform wordAnswersTransform;
 
-        [Tooltip("Prefab for Translation Buttons")]
+        [Tooltip("Prefab for Symbol UI Buttons")]
         public GameObject translationButtonPrefab;
         [Tooltip("Prefab for Symbol UI")]
         public GameObject symbolPrefab;
+        [Tooltip("Prefab for Options")]
+        public GameObject optionButtonPrefab;
         
         private TranslationPuzzle _puzzle;
         private InputActionMap _actions;
+        private int _currIndex;
         private void Awake()
         {
             _actions = FindObjectOfType<PlayerInput>().actions.FindActionMap("Player");
@@ -71,27 +76,28 @@ namespace TranslationUI
             UI.SetActive(true);
             _actions.FindAction("Select").performed += CancelUI;
             InscriptionFlavorText.text = _puzzle.objectName;
+            for (int i = 0; i < _puzzle.words.Length; i++)
+            {
+                if (_puzzle.words[i].startKnown)
+                    _puzzle.words[i].word.PlayerSymbolName = _puzzle.words[i].hint;
+            }
             
             Symbol[] words = _puzzle.words.Select(pair => pair.word).ToArray();
             Utilities.InstantiateToLength(translationButtonPrefab,wordsTransform,words.Length);
             for (int i = 0; i < words.Length; i++)
             {
-                TranslationSymbolButton button = wordsTransform.GetChild(i).GetComponent<TranslationSymbolButton>();
-                button.DisplayedSymbol = words[i];
-                button.ui = this;
-                button.UpdateFromHint(_puzzle.words[i]);
+                UpdateWord(i);
             }
 
             UpdateSymbols(0);
+            UpdateButtons();
 
-            for (int i = 0; i < words.Length; i++)
+            foreach (Symbol symbol in words)
             {
-                //SymbolManager.Instance.SymbolLookup[words[i].symbolName].SeenByPlayer = true;
-                words[i].SeenByPlayer = true;
-                for (int j = 0; j < words[i].contents.Length; j++)
+                symbol.SeenByPlayer = true;
+                foreach (Symbol child in symbol.contents)
                 {
-                    //SymbolManager.Instance.SymbolLookup[words[i].contents[j].symbolName].SeenByPlayer = true;
-                    words[i].contents[j].SeenByPlayer = true;
+                    child.SeenByPlayer = true;
                 }
             }
         }
@@ -110,12 +116,60 @@ namespace TranslationUI
                 TMP_Text text = child.GetComponentInChildren<TMP_Text>();
                 text.text = wordInQuestion.contents[i].PlayerSymbolName;
             }
+
+            _currIndex = index;
         }
 
-        public void OnButtonClick(string symbolName)
+        private void UpdateButtons()
+        {
+            if (_puzzle.words[_currIndex].startKnown)
+            {
+                Utilities.InstantiateToLength(optionButtonPrefab, wordAnswersTransform, 0);
+                return;
+            }
+            
+            string[] options = _puzzle.words[_currIndex].options;
+            Utilities.InstantiateToLength(optionButtonPrefab,wordAnswersTransform,options.Length);
+            for (int i = 0; i < options.Length; i++)
+            {
+                TranslationSelectionButton child = wordAnswersTransform.GetChild(i)
+                    .GetComponent<TranslationSelectionButton>();
+                child.ui = this;
+                child.Initialize(_puzzle.words[_currIndex], i);
+            }
+
+            for (int i = 0; i < _puzzle.words.Length; i++)
+            {
+                if (_puzzle.words[i].word.PlayerSymbolName == Symbol.SymbolDefaultName || string.IsNullOrWhiteSpace(_puzzle.words[i].word.PlayerSymbolName))
+                {
+                    confirmButton.interactable = false;
+                    return;
+                }
+            }
+
+            confirmButton.interactable = true;
+        }
+
+        private void UpdateWord(int index)
+        {
+            TranslationSymbolButton button = wordsTransform.GetChild(index).GetComponent<TranslationSymbolButton>();
+            button.DisplayedSymbol = _puzzle.words[index].word;
+            button.ui = this;
+            button.UpdateFromHint(_puzzle.words[index]);
+        }
+        
+        public void OnSymbolClick(string symbolName)
         {
             UpdateSymbols(_puzzle.words.Select((pair, index) => new {pair.word.symbolName, index})
                 .First(pair => pair.symbolName == symbolName).index);
+            UpdateButtons();
+        }
+
+        public void OnButtonClick(int index)
+        {
+            _puzzle.words[_currIndex].word.PlayerSymbolName = _puzzle.words[_currIndex].options[index];
+            UpdateButtons();
+            UpdateWord(_currIndex);
         }
     }
 }
