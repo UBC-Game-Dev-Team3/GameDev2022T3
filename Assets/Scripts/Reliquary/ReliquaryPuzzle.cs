@@ -12,6 +12,7 @@ namespace Reliquary
     public class ReliquaryPuzzle : ScriptableObject
     {
         public Ring[] rings;
+        public Symbol[] seal;
         
         /// <summary>
         /// 
