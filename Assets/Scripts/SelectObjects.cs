@@ -64,8 +64,7 @@ public class SelectObjects : MonoBehaviour
         } else if (_currentObj != previous)
         {
             if (previous != null) previous.Deselect();
-
-            itemNameUI.text = _currentObj.TooltipText;
+            if (_currentObj.HasTooltip) itemNameUI.text = _currentObj.TooltipText;
             _currentObj.Select();
         }
     }
