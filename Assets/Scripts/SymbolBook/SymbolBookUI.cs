@@ -1,9 +1,10 @@
 ﻿using System.Linq;
 using DialogueStory;
-using StarterAssets;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Util;
 
 namespace SymbolBook
 {
@@ -21,7 +22,7 @@ namespace SymbolBook
         public Image image;
         public GridLayoutGroup appearedIn;
         public GameObject gridPrefab;
-        private StarterAssetsInputs _input;
+        private InputActionMap _actions;
         private int _index;
         private SymbolManager _manager;
         /// <summary>
@@ -29,7 +30,8 @@ namespace SymbolBook
         /// </summary>
         private void Awake()
         {
-            _input = FindObjectOfType<StarterAssetsInputs>();
+            _actions = FindObjectOfType<PlayerInput>().actions.FindActionMap("Player");
+            _actions.FindAction("SymbolBook").performed += OnSymbolBookButtonPress;
             _manager = SymbolManager.Instance;
             if (ui)
             {
@@ -38,20 +40,27 @@ namespace SymbolBook
             }
         }
 
-        private void Update()
+        private void OnDestroy()
         {
-            if (!_input.symbolBook) return;
+            _actions.FindAction("SymbolBook").performed -= OnSymbolBookButtonPress;
+        }
+
+        private void OnSymbolBookButtonPress(InputAction.CallbackContext ctx)
+        {
             bool isDisplayed = ui.activeSelf;
-            _input.symbolBook = false;
             if ((!isDisplayed && !PlayerRelated.ShouldListenForUIOpenEvents) || (nameField.isFocused || description.isFocused)) return;
+            if (isDisplayed) PlayerRelated.TriggerUIClose();
+            else PlayerRelated.TriggerUIOpen();
             ui.SetActive(!isDisplayed);
             scroll.SetActive(!isDisplayed);
-            PlayerRelated.MovementEnabled = isDisplayed;
-            PlayerRelated.InteractionEnabled = isDisplayed;
-            Cursor.lockState = isDisplayed ? CursorLockMode.Locked : CursorLockMode.None;
             SaveToObject();
             UpdateUI();
-            PlayerRelated.ShouldListenForUIOpenEvents = isDisplayed;
+        }
+
+        private void Start()
+        {
+            Symbol[] scrollSymbols = _manager.SeenSymbols().Where(s => !s.isWord).ToArray();
+            _index = _manager.SymbolIndex(scrollSymbols[0].symbolName);
         }
 
         private void SaveToObject()
@@ -65,18 +74,10 @@ namespace SymbolBook
         /// </summary>
         public void UpdateUI()
         {
-            int scrollChild = scrollContent.transform.childCount;
             Symbol[] scrollSymbols = _manager.SeenSymbols().Where(s => !s.isWord).ToArray();
             int desiredScrollChild = scrollSymbols.Length;
-            for (int i = scrollChild-1; i >= desiredScrollChild; i--)
-            {
-                Destroy(scrollContent.transform.GetChild(i).gameObject);
-            }
-
-            for (int i = scrollChild; i < desiredScrollChild; i++)
-            {
-                Instantiate(scrollPrefab, scrollContent.transform);
-            }
+            
+            Utilities.InstantiateToLength(scrollPrefab, scrollContent.transform, desiredScrollChild);
 
             for (int i = 0; i < desiredScrollChild; i++)
             {
@@ -89,17 +90,9 @@ namespace SymbolBook
             nameField.text = symbol.PlayerSymbolName;
             description.text = symbol.PlayerNotes;
             symbol.Render(image.transform.gameObject,250, false);
-            int children = appearedIn.transform.childCount;
             Symbol[] parents = _manager.SeenParents(symbol);
             int desiredChildren = parents.Length;
-            for (int i = children - 1; i >= desiredChildren; i--)
-            {
-                Destroy(appearedIn.transform.GetChild(i).gameObject);
-            }
-            for (int i = children; i < desiredChildren; i++)
-            {
-                Instantiate(gridPrefab, appearedIn.transform);
-            }
+            Utilities.InstantiateToLength(gridPrefab, appearedIn.transform, desiredChildren);
             
             for (int i = 0; i < desiredChildren; i++)
             {

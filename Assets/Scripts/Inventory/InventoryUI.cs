@@ -1,8 +1,9 @@
 using DialogueStory;
-using StarterAssets;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Util;
 
 namespace Inventory
 {
@@ -33,16 +34,16 @@ namespace Inventory
         public Item test;
         public Item test2;
         
-        
         private InventoryManager _inventoryManager;
-        private StarterAssetsInputs _input;
+        private InputActionMap _actions;
 
         /// <summary>
         ///     On awake, find singleton inventory instance and disable the UI.
         /// </summary>
         private void Awake()
         {
-            _input = FindObjectOfType<StarterAssetsInputs>();
+            _actions = FindObjectOfType<PlayerInput>().actions.FindActionMap("Player");
+            _actions.FindAction("Inventory").performed += OnInventoryButtonPress;
             _inventoryManager = InventoryManager.Instance;
             _inventoryManager.onItemChanged.AddListener(UpdateUI);
             inventoryUI.SetActive(false);
@@ -55,22 +56,23 @@ namespace Inventory
             UpdateUI();
         }
 
-        /// <summary>
-        ///     Checks every frame as to whether or not the inventory should be set active.
-        /// </summary>
-        private void Update()
+        private void OnDestroy()
         {
-            if (!_input.inventory) return;
+            _actions.FindAction("Inventory").performed -= OnInventoryButtonPress;
+        }
+
+        /// <summary>
+        ///     Runs on button press - display/hide the UI
+        /// </summary>
+        private void OnInventoryButtonPress(InputAction.CallbackContext ctx)
+        {
             bool isDisplayed = inventoryUI.activeSelf;
-            _input.inventory = false;
             if (!isDisplayed && !PlayerRelated.ShouldListenForUIOpenEvents) return;
+            if (inventoryUI.activeSelf) PlayerRelated.TriggerUIClose();
+            else PlayerRelated.TriggerUIOpen();
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             activeItemDisplay.enabled = !inventoryUI.activeSelf;
-            PlayerRelated.MovementEnabled = !inventoryUI.activeSelf;
-            PlayerRelated.InteractionEnabled = !inventoryUI.activeSelf;
-            Cursor.lockState = activeItemDisplay.enabled ? CursorLockMode.Locked : CursorLockMode.None;
             UpdateUI();
-            PlayerRelated.ShouldListenForUIOpenEvents = isDisplayed;
         }
 
         /// <summary>
