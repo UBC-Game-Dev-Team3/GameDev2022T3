@@ -2,6 +2,7 @@
 using System.Linq;
 using SymbolBook;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Reliquary
 {
@@ -13,6 +14,9 @@ namespace Reliquary
     {
         public Ring[] rings;
         public Symbol[] seal;
+
+        public UnityEvent onSuccess;
+        public UnityEvent onFailure;
         
         /// <summary>
         /// 
@@ -23,7 +27,7 @@ namespace Reliquary
             [Tooltip("All the possible options for the ring")]
             public Symbol[] options;
             [NonSerialized]
-            public Symbol selectedOption;
+            public int SelectedIndex;
             [Tooltip("Correct Answer")]
             public Symbol correctAnswer;
         }
@@ -39,6 +43,14 @@ namespace Reliquary
                 {
                     Debug.LogWarning($"Ring index {i} correct answer {ring.correctAnswer.symbolName} not present in options!");
                 }
+            }
+        }
+
+        public bool solved
+        {
+            get
+            {
+                return rings.All(r => r.options[r.SelectedIndex].symbolName == r.correctAnswer.symbolName);
             }
         }
     }

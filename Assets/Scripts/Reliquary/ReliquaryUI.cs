@@ -17,6 +17,11 @@ namespace Reliquary
         
         [Tooltip("Location to place 'Seal Symbols'")]
         public GameObject centerSymbolLocation;
+        
+        [Tooltip("Area to place rings")]
+        public GameObject ringArea;
+        [Tooltip("Prefab of the Ring")]
+        public GameObject ringPrefab;
 
         private InputActionMap _actions;
         private ReliquaryPuzzle _puzzle;
@@ -30,10 +35,43 @@ namespace Reliquary
         {
             CloseUI();
         }
+
+        public void OnActivateButtonClick()
+        {
+            if (_puzzle.solved)
+            {
+                _puzzle.onSuccess?.Invoke();
+                Debug.Log("SUCCESS");
+            }
+            else
+            {
+                _puzzle.onFailure?.Invoke();
+                Debug.Log("FAILURE");
+            }
+            CloseUI();
+        }
         
         private void CancelUI(InputAction.CallbackContext ctx)
         {
             OnBackButtonClick();
+        }
+
+        private void UpdateRings()
+        {
+            Utilities.InstantiateToLength(ringPrefab, ringArea.transform, _puzzle.rings.Length);
+            for (int i = 0; i < _puzzle.rings.Length; i++)
+            {
+                ReliquaryRing ring = ringArea.transform.GetChild(i).GetComponent<ReliquaryRing>();
+                ring.ui = this;
+                ring.UpdateRing(_puzzle, i);
+            }
+        }
+
+        public void OnRingClick(int index)
+        {
+            int prevIndex = _puzzle.rings[index].SelectedIndex;
+            if (prevIndex >= _puzzle.rings[index].options.Length - 1) _puzzle.rings[index].SelectedIndex = 0;
+            else _puzzle.rings[index].SelectedIndex++;
         }
 
         private void UpdateCenterSymbols()
@@ -60,6 +98,7 @@ namespace Reliquary
             _actions.FindAction("Select").performed += CancelUI;
             
             UpdateCenterSymbols();
+            UpdateRings();
         }
         
         public void CloseUI()
