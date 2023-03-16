@@ -53,12 +53,19 @@ namespace Inventory
             leftIcon.preserveAspect = true;
             middleIcon.preserveAspect = true;
             rightIcon.preserveAspect = true;
+            PlayerRelated.OnUIChangeDelegate += OnUIStateChangeReceiver;
             UpdateUI();
         }
 
         private void OnDestroy()
         {
             _actions.FindAction("Inventory").performed -= OnInventoryButtonPress;
+            PlayerRelated.OnUIChangeDelegate -= OnUIStateChangeReceiver;
+        }
+
+        private void OnUIStateChangeReceiver(bool isNowActive)
+        {
+            activeItemDisplay.enabled = !isNowActive;
         }
 
         /// <summary>
