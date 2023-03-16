@@ -32,7 +32,7 @@ namespace Reliquary
             _index = index;
             _puzzle = puzzle;
             ReliquaryPuzzle.Ring ring = puzzle.rings[index];
-            float initialRotation = puzzle.rings[index].SelectedIndex * 360f / _puzzle.rings[index].options.Length;
+            float initialRotation = -ring.SelectedIndex * 360f / ring.options.Length;
             transform.localEulerAngles = new Vector3(0, 0, initialRotation);
             int size = centerSize + (ringSize * (puzzle.rings.Length - index));
             _rectTransform.sizeDelta = new Vector2(size,size);
