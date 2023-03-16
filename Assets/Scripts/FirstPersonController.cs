@@ -119,10 +119,10 @@ namespace StarterAssets
 
 		private void Update()
 		{
+			if (!movementEnabled) return;
 			JumpAndGravity();
 			GroundedCheck();
-			// no, I don't wanna figure out if this actually doesn't break s--t
-			if (movementEnabled) Move();
+			Move();
 		}
 
 		private void LateUpdate()
