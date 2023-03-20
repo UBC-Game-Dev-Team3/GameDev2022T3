@@ -22,6 +22,8 @@ namespace SymbolBook
         public string PlayerSymbolName = SymbolDefaultName;
         [Tooltip("Take a wild guess")]
         public Sprite image;
+        [Tooltip("Highlighted Image")]
+        public Sprite highlightImage;
         /// <summary>
         /// Player notes written by the user. Is also likely incorrect.
         /// </summary>
@@ -36,7 +38,7 @@ namespace SymbolBook
         [Tooltip("List of Symbols this Makes Up")]
         public Symbol[] contents;
 
-        public void Render(GameObject parent, int spriteSize = 100, bool raycastTarget = true)
+        public void Render(GameObject parent, int spriteSize = 100, bool raycastTarget = true, bool highlight = false)
         {
             Image sprite = parent.GetComponent<Image>();
             int childCount = parent.transform.childCount;
@@ -61,8 +63,8 @@ namespace SymbolBook
                 float width = 0;
                 for (int i = 0; i < desiredScrollChild; i++)
                 {
-                    scaleFactor = Math.Min(scaleFactor, spriteSize / contents[i].image.rect.height);
-                    width += contents[i].image.rect.width;
+                    scaleFactor = Math.Min(scaleFactor, spriteSize / (highlight ? contents[i].highlightImage : contents[i].image).rect.height);
+                    width += (highlight ? contents[i].highlightImage : contents[i].image).rect.width;
                 }
 
                 float xPos = -(width / 2) * scaleFactor;
@@ -70,7 +72,7 @@ namespace SymbolBook
                 {
                     Transform child = sprite.transform.GetChild(i);
                     Image imageChild = child.GetComponent<Image>();
-                    imageChild.sprite = contents[i].image;
+                    imageChild.sprite = highlight ? contents[i].highlightImage : contents[i].image;
                     RectTransform rectTransform = child.GetComponent<RectTransform>();
                     rectTransform.sizeDelta = new Vector2(imageChild.preferredWidth*scaleFactor, spriteSize);
                     imageChild.raycastTarget = raycastTarget;
@@ -84,7 +86,7 @@ namespace SymbolBook
             } else if (sprite != null)
             {
                 sprite.preserveAspect = true;
-                sprite.sprite = image;
+                sprite.sprite = highlight ? highlightImage : image;
             }
         }
     }

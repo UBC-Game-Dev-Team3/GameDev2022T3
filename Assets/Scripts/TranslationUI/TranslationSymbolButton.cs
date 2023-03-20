@@ -36,6 +36,16 @@ namespace TranslationUI
                 text.text = _symbol.PlayerSymbolName;
         }
 
+        public void Highlight()
+        {
+            _symbol.Render(sprite.transform.gameObject, 100, highlight: true);
+        }
+        
+        public void DeHighlight()
+        {
+            _symbol.Render(sprite.transform.gameObject, 100);
+        }
+
         public void UpdateFromHint(TranslationPuzzle.WordPair word)
         {
             if (string.IsNullOrWhiteSpace(word.hint)) return;
