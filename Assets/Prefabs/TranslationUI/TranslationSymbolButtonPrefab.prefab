@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 2220780958238984715, guid: dc5752e7e75084245a3f03674c2abc52,
         type: 3}
       propertyPath: m_Name
-      value: SymbolUI
+      value: TranslationSymbolButtonPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 2419217987980041590, guid: dc5752e7e75084245a3f03674c2abc52,
         type: 3}
@@ -117,11 +117,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6371658139349698301, guid: dc5752e7e75084245a3f03674c2abc52,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9dc46d38839694616a7064db3e710a7b,
+        type: 2}
+    - target: {fileID: 6371658139349698301, guid: dc5752e7e75084245a3f03674c2abc52,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 6371658139349698301, guid: dc5752e7e75084245a3f03674c2abc52,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6371658139349698301, guid: dc5752e7e75084245a3f03674c2abc52,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 6371658139349698301, guid: dc5752e7e75084245a3f03674c2abc52,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5421738096562283465, guid: 9dc46d38839694616a7064db3e710a7b,
+        type: 2}
+    - target: {fileID: 6371658139349698301, guid: dc5752e7e75084245a3f03674c2abc52,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4291349704
+      objectReference: {fileID: 0}
     - target: {fileID: 7480186508165234845, guid: dc5752e7e75084245a3f03674c2abc52,
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8691519083058933242, guid: dc5752e7e75084245a3f03674c2abc52,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7332d40ac6d61403d8c95322a84b02fd,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc5752e7e75084245a3f03674c2abc52, type: 3}
 --- !u!1 &220649555194839157 stripped
@@ -142,7 +180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab5d27ed5e0462f9a6675607052a64c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui: {fileID: 0}
   sprite: {fileID: 7295921094294529924}
   text: {fileID: 5022224193918307459}
 --- !u!114 &8276771306762680671
