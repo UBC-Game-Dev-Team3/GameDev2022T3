@@ -42,6 +42,13 @@ namespace SymbolBook
         {
             Image sprite = parent.GetComponent<Image>();
             int childCount = parent.transform.childCount;
+            for (int i = 0; i < childCount; i++)
+            {
+                if (parent.transform.GetChild(i).gameObject.name != "Highlight") continue;
+                parent.transform.GetChild(i).SetAsFirstSibling();
+                childCount--;
+                break;
+            }
             Symbol[] scrollSymbols = contents;
             int desiredScrollChild = isWord ? scrollSymbols.Length : 0;
             for (int i = childCount-1; i >= desiredScrollChild; i--)

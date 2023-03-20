@@ -22,8 +22,27 @@ namespace SymbolBook
             }
         }
 
+        public bool Highlighted
+        {
+            set
+            {
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    if (transform.GetChild(i).gameObject.name != "Highlight") continue;
+                    if (!value) Destroy(transform.GetChild(i).gameObject);
+                    return;
+                }
+
+                if (value)
+                {
+                    Instantiate(highlight, transform);
+                }
+            }
+        }
+
         private Symbol _symbol;
         public Image sprite;
+        public GameObject highlight;
         public TMP_Text text;
 
         private void Awake()
@@ -34,7 +53,7 @@ namespace SymbolBook
             if (text != null)
                 text.text = _symbol.PlayerSymbolName;
         }
-        
+
         public void OnButtonClick()
         {
             if (ui != null && DisplayedSymbol != null)
