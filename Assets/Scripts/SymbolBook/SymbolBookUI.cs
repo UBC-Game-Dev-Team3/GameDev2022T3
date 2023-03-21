@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using DialogueStory;
+﻿using System;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -55,6 +55,7 @@ namespace SymbolBook
             scroll.SetActive(!isDisplayed);
             SaveToObject();
             UpdateUI();
+            UpdateHighlight(-1);
         }
 
         private void Start()
@@ -106,8 +107,29 @@ namespace SymbolBook
         public void OnButtonClick(string newSymbolName)
         {
             SaveToObject();
+            int prev = _index;
             _index = _manager.SymbolIndex(newSymbolName);
             UpdateUI();
+            UpdateHighlight(prev);
+        }
+
+        private void UpdateHighlight(int prevIndex)
+        {
+            if (prevIndex >= 0)
+            {
+                int prevScrollIndex =
+                    Array.IndexOf(_manager.SeenSymbols().Where(s => !s.isWord).Select(sym => sym.symbolName).ToArray(),
+                        _manager.symbols[prevIndex].symbolName);
+                if (prevScrollIndex >= 0)
+                    scrollContent.transform.GetChild(prevScrollIndex).GetComponent<SymbolBookButton>().Highlighted =
+                        false;
+            }
+
+            int newIndex =
+                Array.IndexOf(_manager.SeenSymbols().Where(s => !s.isWord).Select(sym => sym.symbolName).ToArray(),
+                    _manager.symbols[_index].symbolName);
+            if (newIndex >= 0)
+                scrollContent.transform.GetChild(newIndex).GetComponent<SymbolBookButton>().Highlighted = true;
         }
     }
 }

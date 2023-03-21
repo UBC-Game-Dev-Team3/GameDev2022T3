@@ -15,5 +15,7 @@ MonoBehaviour:
   isWord: 0
   symbolName: O
   image: {fileID: 21300000, guid: f9cb283f786a69844ae164a75fc7c38d, type: 3}
+  highlightImage: {fileID: -2413806693520163455, guid: 66e607da88d34bd4c9dde04e2f39a318,
+    type: 3}
   startSeen: 0
   contents: []

@@ -3,7 +3,12 @@ guid: fbac8f40dc179466493bd273388b76d8
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Potion
+    second: {fileID: 2100000, guid: 8a75124114cf54b53a5666807310ce91, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -35,7 +35,7 @@ namespace TranslationUI
         
         private TranslationPuzzle _puzzle;
         private InputActionMap _actions;
-        private int _currIndex;
+        private int _currIndex = -1;
         private void Awake()
         {
             _actions = FindObjectOfType<PlayerInput>().actions.FindActionMap("Player");
@@ -117,7 +117,16 @@ namespace TranslationUI
                 text.text = wordInQuestion.contents[i].PlayerSymbolName;
             }
 
+            if (_currIndex != -1)
+            {
+                TranslationSymbolButton prevButton =
+                    wordsTransform.GetChild(_currIndex).GetComponent<TranslationSymbolButton>();
+                prevButton.DeHighlight();
+            }
+
             _currIndex = index;
+            TranslationSymbolButton button = wordsTransform.GetChild(index).GetComponent<TranslationSymbolButton>();
+            button.Highlight();
         }
 
         private void UpdateButtons()
