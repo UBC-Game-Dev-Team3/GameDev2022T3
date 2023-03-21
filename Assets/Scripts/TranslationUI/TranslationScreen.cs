@@ -165,6 +165,7 @@ namespace TranslationUI
             button.DisplayedSymbol = _puzzle.words[index].word;
             button.ui = this;
             button.UpdateFromHint(_puzzle.words[index]);
+            if (_currIndex == index) button.Highlight();
         }
         
         public void OnSymbolClick(string symbolName)
