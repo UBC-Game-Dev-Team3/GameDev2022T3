@@ -12,6 +12,8 @@ namespace DialogueStory
 {
     public class DialogueManager : DestroySingleton<DialogueManager>, IStoryPlayer
     {
+        [Tooltip("Inventory to progress dialogue")]
+        public KeyCode nextDialogueKey = KeyCode.F;
         [Tooltip("Array of buttons for choices, in the same order as the hierarchy.")]
         public Button[] buttons;
         [Tooltip("Voices")]
@@ -137,7 +139,7 @@ namespace DialogueStory
                 DialogueScreen.Instance.Text += letter;
 
                 // If next key pressed early, skip to the end of the line.
-                if (!Input.GetKeyDown(SettingsManager.Instance.nextDialogueKey)) continue;
+                if (!Input.GetKeyDown(nextDialogueKey)) continue;
                 DialogueScreen.Instance.Text = text;
                 yield return null;
                 break;
@@ -149,7 +151,7 @@ namespace DialogueStory
             }
 
             // Wait for next key press to advance dialogue.
-            while (!Input.GetKeyDown(SettingsManager.Instance.nextDialogueKey))
+            while (!Input.GetKeyDown(nextDialogueKey))
             {
                 yield return null;
             }
