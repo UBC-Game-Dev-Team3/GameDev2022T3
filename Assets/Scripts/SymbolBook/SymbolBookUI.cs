@@ -134,7 +134,6 @@ namespace SymbolBook
 
         public void OnValueChanged()
         {
-            Debug.Log("OnValueChanged");
             if (modifyingUIState) return;
             SaveToObject();
             _manager.symbols[_index].HasPlayerModified = true;
