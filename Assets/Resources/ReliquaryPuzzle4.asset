@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9229e1c5621447c69050bc39cbc2c586, type: 3}
+  m_Name: ReliquaryPuzzle4
+  m_EditorClassIdentifier: 
+  rings:
+  - options:
+    - {fileID: 11400000, guid: d1d0883d8b177f442b7d769fcca34202, type: 2}
+    - {fileID: 11400000, guid: dd5c4737d796ed54f8120a079cb4a929, type: 2}
+    - {fileID: 11400000, guid: 2a95c48cb6494774d85d2328b79d4992, type: 2}
+    - {fileID: 11400000, guid: 39228bc215fd49f4ba282b79dd8ce456, type: 2}
+    correctAnswer: {fileID: 11400000, guid: 39228bc215fd49f4ba282b79dd8ce456, type: 2}
+  - options:
+    - {fileID: 11400000, guid: a460bd2cf81869e4b99d06ec71f2697a, type: 2}
+    - {fileID: 11400000, guid: e592419f428bcb24db7c454883734654, type: 2}
+    - {fileID: 11400000, guid: 39228bc215fd49f4ba282b79dd8ce456, type: 2}
+    - {fileID: 11400000, guid: fbab8d7127b46e743925473d45aca2b7, type: 2}
+    correctAnswer: {fileID: 11400000, guid: e592419f428bcb24db7c454883734654, type: 2}
+  - options:
+    - {fileID: 11400000, guid: 9a2f7977951a7ed4a856cd85fed0cdbc, type: 2}
+    - {fileID: 11400000, guid: 3e88f40a933da3247bd41f8eb8585fc3, type: 2}
+    - {fileID: 11400000, guid: fbab8d7127b46e743925473d45aca2b7, type: 2}
+    - {fileID: 11400000, guid: a460bd2cf81869e4b99d06ec71f2697a, type: 2}
+    correctAnswer: {fileID: 11400000, guid: fbab8d7127b46e743925473d45aca2b7, type: 2}
+  seal:
+  - {fileID: 11400000, guid: e592419f428bcb24db7c454883734654, type: 2}
+  - {fileID: 11400000, guid: 39228bc215fd49f4ba282b79dd8ce456, type: 2}
+  - {fileID: 11400000, guid: a460bd2cf81869e4b99d06ec71f2697a, type: 2}
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFailure:
+    m_PersistentCalls:
+      m_Calls: []
