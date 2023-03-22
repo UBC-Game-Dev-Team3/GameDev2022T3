@@ -2530,7 +2530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cm: {fileID: 2067021021}
   itemNameUI: {fileID: 715674171}
-  viewRange: 15
+  viewRange: 10
 --- !u!1 &467635949 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 925992415551905824, guid: be5ad2e6cc3d44f7c903d8f475be34e2,
@@ -3888,7 +3888,7 @@ PrefabInstance:
     - target: {fileID: 8614976237503425204, guid: bf5eb8557c8fa12488ce00cc04793b8e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 417.49982
+      value: 417.49945
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf5eb8557c8fa12488ce00cc04793b8e, type: 3}
