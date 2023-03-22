@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d320b5641ec44cd9a19576bc47b91f32, type: 3}
+  m_Name: 3H Photograph of Odd Family
+  m_EditorClassIdentifier: 
+  objectName: Photograph of Odd Family
+  words:
+  - word: {fileID: 11400000, guid: cdccd7c1e78244e31a1b87f0bfd5b0fd, type: 2}
+    options: []
+    hint: 
+    startKnown: 0
+  - word: {fileID: 11400000, guid: 4fc4265dac51e466d8a6bac94ca94c25, type: 2}
+    options: []
+    hint: 
+    startKnown: 0

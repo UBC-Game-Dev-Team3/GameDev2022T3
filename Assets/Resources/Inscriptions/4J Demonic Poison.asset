@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d320b5641ec44cd9a19576bc47b91f32, type: 3}
+  m_Name: 4J Demonic Poison
+  m_EditorClassIdentifier: 
+  objectName: Demonic Poison
+  words:
+  - word: {fileID: 11400000, guid: bcd77eccc8316444ab6c9b16bdab38bb, type: 2}
+    options: []
+    hint: 
+    startKnown: 0
+  - word: {fileID: 11400000, guid: 98795a508d95844d6926db9bad685171, type: 2}
+    options: []
+    hint: 
+    startKnown: 0

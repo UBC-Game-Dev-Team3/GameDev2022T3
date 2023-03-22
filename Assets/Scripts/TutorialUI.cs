@@ -10,7 +10,7 @@ public class TutorialUI : MonoBehaviour
     }
 
     private void Update()
-    {
+    {//
         Cursor.lockState = CursorLockMode.None;
     }
 

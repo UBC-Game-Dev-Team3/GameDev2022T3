@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d320b5641ec44cd9a19576bc47b91f32, type: 3}
+  m_Name: 2F Traitors Skull
+  m_EditorClassIdentifier: 
+  objectName: Traitor's Skull
+  words:
+  - word: {fileID: 11400000, guid: 7bc428317276b4aeaa26c0df2b738d30, type: 2}
+    options: []
+    hint: 
+    startKnown: 0
+  - word: {fileID: 11400000, guid: 93f1623823a174c0e91c2f0152d9014e, type: 2}
+    options: []
+    hint: 
+    startKnown: 0

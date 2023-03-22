@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b252f15631f4b2e8d4717fa43569ba5, type: 3}
+  m_Name: Godly (adjective)
+  m_EditorClassIdentifier: 
+  isWord: 1
+  symbolName: Godly / of God
+  image: {fileID: 0}
+  highlightImage: {fileID: 0}
+  startSeen: 0
+  contents:
+  - {fileID: 11400000, guid: 563ddf6789683445d8a88466db1ad05c, type: 2}
+  - {fileID: 11400000, guid: eba2e46be8fa14b3a9aea5eba84db465, type: 2}
+  - {fileID: 11400000, guid: 1c8be5195b44948e2a7f70e24f26d97e, type: 2}
+  - {fileID: 11400000, guid: 797fdc3af86c4484dbcbbc940a4ac0ec, type: 2}
