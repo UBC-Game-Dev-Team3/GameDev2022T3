@@ -75,6 +75,13 @@ namespace SymbolBook
         /// </summary>
         public void UpdateUI()
         {
+            UpdateScroll();
+            UpdateMain();
+            UpdateSeenInGrid();
+        }
+
+        private void UpdateScroll()
+        {
             Symbol[] scrollSymbols = _manager.SeenSymbols().Where(s => !s.isWord).ToArray();
             int desiredScrollChild = scrollSymbols.Length;
             
@@ -86,11 +93,19 @@ namespace SymbolBook
                 button.DisplayedSymbol = scrollSymbols[i];
                 button.ui = this;
             }
+        }
 
+        private void UpdateMain()
+        {
             Symbol symbol = _manager.symbols[_index];
-            nameField.text = symbol.PlayerSymbolName;
+            nameField.text = symbol.HasPlayerModified ? symbol.PlayerSymbolName : "";
             description.text = symbol.PlayerNotes;
             symbol.Render(image.transform.gameObject,250, false);
+        }
+
+        private void UpdateSeenInGrid()
+        {
+            Symbol symbol = _manager.symbols[_index];
             Symbol[] parents = _manager.SeenParents(symbol);
             int desiredChildren = parents.Length;
             Utilities.InstantiateToLength(gridPrefab, appearedIn.transform, desiredChildren);
@@ -104,13 +119,26 @@ namespace SymbolBook
             }
         }
 
+        private bool modifyingUIState = false;
+
         public void OnButtonClick(string newSymbolName)
         {
             SaveToObject();
             int prev = _index;
             _index = _manager.SymbolIndex(newSymbolName);
+            modifyingUIState = true;
             UpdateUI();
             UpdateHighlight(prev);
+            modifyingUIState = false;
+        }
+
+        public void OnValueChanged()
+        {
+            Debug.Log("OnValueChanged");
+            if (modifyingUIState) return;
+            SaveToObject();
+            _manager.symbols[_index].HasPlayerModified = true;
+            UpdateSeenInGrid();
         }
 
         private void UpdateHighlight(int prevIndex)
