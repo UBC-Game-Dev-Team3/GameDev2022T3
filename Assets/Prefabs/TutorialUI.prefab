@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Continue
+  m_text: Enter...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 060441b91a4ba4b1ebd218c1f82684df, type: 2}
   m_sharedMaterial: {fileID: -3439845982533804954, guid: 060441b91a4ba4b1ebd218c1f82684df,
@@ -371,8 +371,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5668539634002736655}
   m_HandleRect: {fileID: 6845862089897293144}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1.000001
+  m_Size: 0.674991
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -386,6 +386,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8614976237503425204}
+  - component: {fileID: 8780072083404732638}
+  - component: {fileID: 1975101676378888026}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -409,11 +411,51 @@ RectTransform:
   m_Father: {fileID: 968069341972908406}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -894, y: 412.99963}
+  m_SizeDelta: {x: 1787, y: 0}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &8780072083404732638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366396416074259489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 1
+  m_ReverseArrangement: 0
+--- !u!114 &1975101676378888026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366396416074259489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &1863648987846799381
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +467,7 @@ GameObject:
   - component: {fileID: 1863648987846799378}
   - component: {fileID: 1863648987846799376}
   - component: {fileID: 1863648987846799379}
-  - component: {fileID: 1863648987846799377}
+  - component: {fileID: 5964267219417439473}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -448,10 +490,10 @@ RectTransform:
   m_Father: {fileID: 8614976237503425204}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 40, y: -40}
-  m_SizeDelta: {x: -80, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1787, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1863648987846799376
 CanvasRenderer:
@@ -481,10 +523,32 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hihi welcome to the game
-
-
-    no clue'
+  m_text: "In a time long forgotten, the scholar Varan wandered the Nine Old Kingdoms
+    in an insatiable quest for knowledge. In each passing town he gathered all that
+    he could, from venerable texts of ancient masters to hastily recorded ravings
+    of lunatics. For Varan knew something that all others did not. \n\nHe had, with
+    his own eyes, seen through the flimsy fabric which held the realm of mortals
+    from the realm of Daemons. He had bore witness to their ultimate power, and he
+    coveted it over all. \n\nThough his path was scorned as fruitless, Varan did
+    not cease until he had perfectly translated the Daemonic language, and shattered
+    the barrier between realms.\n\nThrough his reliquary, a portal between realms,
+    he drew and bound Daemons to his will, using their power for miracles and sorceries
+    which none could resist. He proclaimed himself eternal king, expecting the immortal
+    power which coursed through him to sustain him for all time. But Varan mistook
+    eternal life for eternal youth, and his body began to fade into decrepitude.\n\nIn
+    a final act of defiance, Varan transposed his soul into the immortal realm through
+    his grand reliquary, the portal from which his power was drawn. Behind him lay
+    four seals, etched in Daemonic script and unshatterable by anyone except a master
+    of the Daemonic tongue. It is said that Varan lies in wait for a worthy apprentice
+    to break the seals and release his soul, so that he would grant them his power,
+    and his eternal kingdom.\n\nMany have tried, all have failed. But each aspirant
+    has carefully recorded their findings in the ancient Daemonicum, so those after
+    them may finally break the seals, and claim the power of the immortals.\n\nYou
+    are yet another Aspirant who has spent their life and fortune on acquiring the
+    Daemonicum, and unlocking the Varan\u2019s Seals. As you stand before the oaken
+    door of Varan\u2019s study, you cannot help but wonder: will it be enough? Can
+    you use the knowledge of your forebears to finally inherit the power of the eternal
+    king? Or will you fade into poverty and obscurity, like so many before you? "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9dc46d38839694616a7064db3e710a7b, type: 2}
   m_sharedMaterial: {fileID: 5421738096562283465, guid: 9dc46d38839694616a7064db3e710a7b,
@@ -512,13 +576,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -554,7 +618,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1863648987846799377
+--- !u!114 &5964267219417439473
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -578,7 +642,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3600542178843086190}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: FullUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -850,7 +914,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -107, y: 90}
+  m_AnchoredPosition: {x: -107, y: 50}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &8646762670595199736
