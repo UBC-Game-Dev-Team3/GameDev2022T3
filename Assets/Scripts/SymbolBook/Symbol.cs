@@ -20,6 +20,8 @@ namespace SymbolBook
         /// </summary>
         [NonSerialized]
         public string PlayerSymbolName = SymbolDefaultName;
+        [NonSerialized]
+        public bool HasPlayerModified = false;
         [Tooltip("Take a wild guess")]
         public Sprite image;
         [Tooltip("Highlighted Image")]
