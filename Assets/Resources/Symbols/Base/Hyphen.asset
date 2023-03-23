@@ -16,5 +16,5 @@ MonoBehaviour:
   symbolName: Hyphen_BASE
   image: {fileID: 21300000, guid: d54d1bed707d1429badb2ff4c88f3cb5, type: 3}
   highlightImage: {fileID: 0}
-  startSeen: 0
+  startSeen: 1
   contents: []

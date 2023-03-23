@@ -16,5 +16,5 @@ MonoBehaviour:
   symbolName: Adjective_BASE
   image: {fileID: 21300000, guid: 692b0547d7d8a46cfba0384ea8cff631, type: 3}
   highlightImage: {fileID: 0}
-  startSeen: 0
+  startSeen: 1
   contents: []

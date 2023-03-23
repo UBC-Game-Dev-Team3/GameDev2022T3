@@ -16,5 +16,5 @@ MonoBehaviour:
   symbolName: Verb_BASE
   image: {fileID: 21300000, guid: 6611ab252a61440fb9f596febaeb4dda, type: 3}
   highlightImage: {fileID: 0}
-  startSeen: 0
+  startSeen: 1
   contents: []
