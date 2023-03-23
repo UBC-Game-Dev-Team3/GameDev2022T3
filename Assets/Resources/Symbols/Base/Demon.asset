@@ -15,6 +15,6 @@ MonoBehaviour:
   isWord: 0
   symbolName: Demon_BASE
   image: {fileID: 21300000, guid: b728240bb6364403f9364ad4c0c3b598, type: 3}
-  highlightImage: {fileID: 0}
+  highlightImage: {fileID: 21300000, guid: 0f38403aa58454c398866666a4a0f1ed, type: 3}
   startSeen: 0
   contents: []

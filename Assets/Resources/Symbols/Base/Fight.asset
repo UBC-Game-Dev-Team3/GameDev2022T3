@@ -15,6 +15,6 @@ MonoBehaviour:
   isWord: 0
   symbolName: Fight_BASE
   image: {fileID: 21300000, guid: 0f3f3977c46974eaeb26a13237a357f2, type: 3}
-  highlightImage: {fileID: 0}
+  highlightImage: {fileID: 21300000, guid: 689976c286d4c4340bd642677db85e2c, type: 3}
   startSeen: 0
   contents: []

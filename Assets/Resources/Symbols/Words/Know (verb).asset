@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b252f15631f4b2e8d4717fa43569ba5, type: 3}
-  m_Name: Verb
+  m_Name: Know (verb)
   m_EditorClassIdentifier: 
-  isWord: 0
-  symbolName: Verb_BASE
-  image: {fileID: 21300000, guid: 6611ab252a61440fb9f596febaeb4dda, type: 3}
-  highlightImage: {fileID: 21300000, guid: 8665ef6ee177c4527bb9574a9fe87ba4, type: 3}
+  isWord: 1
+  symbolName: Know
+  image: {fileID: 0}
+  highlightImage: {fileID: 0}
   startSeen: 0
-  contents: []
+  contents:
+  - {fileID: 11400000, guid: dbe78d3485ca94d1da0436eb23f37889, type: 2}
+  - {fileID: 11400000, guid: 6671ea7496fec4525b9884f523b884f6, type: 2}

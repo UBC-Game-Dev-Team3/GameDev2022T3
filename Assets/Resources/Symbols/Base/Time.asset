@@ -15,6 +15,6 @@ MonoBehaviour:
   isWord: 0
   symbolName: Time_BASE
   image: {fileID: 21300000, guid: a3b9632a1305f4b718729b0f11dad0e3, type: 3}
-  highlightImage: {fileID: 0}
+  highlightImage: {fileID: 21300000, guid: 0b7f29b25545f4fd297d2c8b033c8626, type: 3}
   startSeen: 0
   contents: []

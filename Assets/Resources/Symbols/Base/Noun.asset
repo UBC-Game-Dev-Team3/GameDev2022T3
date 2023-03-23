@@ -15,6 +15,6 @@ MonoBehaviour:
   isWord: 0
   symbolName: Noun_BASE
   image: {fileID: 21300000, guid: face043e39d5a4dd784ce419d36555cd, type: 3}
-  highlightImage: {fileID: 0}
+  highlightImage: {fileID: 21300000, guid: 866f3bdc9b3c7446495a1156caad4665, type: 3}
   startSeen: 0
   contents: []
