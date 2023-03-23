@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Util;
 
 public class TutorialUI : MonoBehaviour
@@ -10,7 +9,7 @@ public class TutorialUI : MonoBehaviour
     }
 
     private void Update()
-    {//
+    {
         Cursor.lockState = CursorLockMode.None;
     }
 
