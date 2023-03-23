@@ -72,8 +72,11 @@ namespace SymbolBook
                 float width = 0;
                 for (int i = 0; i < desiredScrollChild; i++)
                 {
-                    scaleFactor = Math.Min(scaleFactor, spriteSize / (highlight ? contents[i].highlightImage : contents[i].image).rect.height);
-                    width += (highlight ? contents[i].highlightImage : contents[i].image).rect.width;
+                    Sprite spriteI = highlight
+                        ? contents[i].highlightImage == null ? contents[i].image : contents[i].highlightImage
+                        : contents[i].image;
+                    scaleFactor = Math.Min(scaleFactor, spriteSize / spriteI.rect.height);
+                    width += spriteI.rect.width;
                 }
 
                 float xPos = -(width / 2) * scaleFactor;
@@ -81,7 +84,11 @@ namespace SymbolBook
                 {
                     Transform child = sprite.transform.GetChild(i);
                     Image imageChild = child.GetComponent<Image>();
-                    imageChild.sprite = highlight ? contents[i].highlightImage : contents[i].image;
+                    
+                    Sprite spriteI = highlight
+                        ? contents[i].highlightImage == null ? contents[i].image : contents[i].highlightImage
+                        : contents[i].image;//
+                    imageChild.sprite = spriteI;
                     RectTransform rectTransform = child.GetComponent<RectTransform>();
                     rectTransform.sizeDelta = new Vector2(imageChild.preferredWidth*scaleFactor, spriteSize);
                     imageChild.raycastTarget = raycastTarget;
