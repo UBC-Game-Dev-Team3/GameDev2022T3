@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b252f15631f4b2e8d4717fa43569ba5, type: 3}
   m_Name: Life-giving (adjective)
   m_EditorClassIdentifier: 
-  isWord: 0
-  symbolName: New Symbol
+  isWord: 1
+  symbolName: Life-giving
   image: {fileID: 0}
   highlightImage: {fileID: 0}
   startSeen: 0
