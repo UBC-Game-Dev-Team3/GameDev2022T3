@@ -60,6 +60,9 @@ namespace SymbolBook
 
             if (sprite != null) sprite.enabled = !isWord;
 
+            HorizontalLayoutGroup layoutGroup = parent.GetComponent<HorizontalLayoutGroup>();
+            if (layoutGroup != null) layoutGroup.enabled = isWord;
+
             if (isWord)
             {
                 for (int i = childCount; i < desiredScrollChild; i++)
@@ -68,18 +71,6 @@ namespace SymbolBook
                     go.transform.SetParent(parent.transform, false);
                 }
 
-                float scaleFactor = 1;
-                float width = 0;
-                for (int i = 0; i < desiredScrollChild; i++)
-                {
-                    Sprite spriteI = highlight
-                        ? contents[i].highlightImage == null ? contents[i].image : contents[i].highlightImage
-                        : contents[i].image;
-                    scaleFactor = Math.Min(scaleFactor, spriteSize / spriteI.rect.height);
-                    width += spriteI.rect.width;
-                }
-
-                float xPos = -(width / 2) * scaleFactor;
                 for (int i = 0; i < desiredScrollChild; i++)
                 {
                     Transform child = sprite.transform.GetChild(i);
@@ -89,15 +80,8 @@ namespace SymbolBook
                         ? contents[i].highlightImage == null ? contents[i].image : contents[i].highlightImage
                         : contents[i].image;//
                     imageChild.sprite = spriteI;
-                    RectTransform rectTransform = child.GetComponent<RectTransform>();
-                    rectTransform.sizeDelta = new Vector2(imageChild.preferredWidth*scaleFactor, spriteSize);
                     imageChild.raycastTarget = raycastTarget;
-                    xPos += imageChild.preferredWidth * scaleFactor / 2;
-                    Vector3 position = rectTransform.localPosition;
-                    float prev = position.x;
-                    position += new Vector3(xPos - prev,0,0);
-                    rectTransform.localPosition = position;
-                    xPos += imageChild.preferredWidth* scaleFactor/2;
+                    imageChild.preserveAspect = true;
                 }
             } else if (sprite != null)
             {
