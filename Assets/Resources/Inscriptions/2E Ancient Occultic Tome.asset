@@ -24,5 +24,5 @@ MonoBehaviour:
     startKnown: 0
   - word: {fileID: 11400000, guid: 2f8db7ecd54944ac1a7c298048082132, type: 2}
     options: []
-    hint: 
+    hint: What can be gained within
     startKnown: 0

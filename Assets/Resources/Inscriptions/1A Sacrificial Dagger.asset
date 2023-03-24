@@ -20,5 +20,5 @@ MonoBehaviour:
     startKnown: 0
   - word: {fileID: 11400000, guid: 2eb145549a5864efba685d76ffc9f6cf, type: 2}
     options: []
-    hint: 
+    hint: Why display a common dagger
     startKnown: 0

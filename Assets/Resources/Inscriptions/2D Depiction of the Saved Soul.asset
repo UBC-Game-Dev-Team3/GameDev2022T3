@@ -16,7 +16,7 @@ MonoBehaviour:
   words:
   - word: {fileID: 11400000, guid: 3e0fa964797d844bdad33375a3e505ae, type: 2}
     options: []
-    hint: 
+    hint: Recieve
     startKnown: 0
   - word: {fileID: 11400000, guid: 393eb093c492c4c8cac09b6ad74ca969, type: 2}
     options: []
