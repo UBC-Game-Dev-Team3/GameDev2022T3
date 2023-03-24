@@ -73,6 +73,11 @@ namespace SymbolBook
 
                 foreach (Symbol child in s.contents)
                 {
+                    if (child == null)
+                    {
+                        Debug.LogWarning(s.symbolName + " has null child. Skipping.");
+                        continue;
+                    }
                     if (!AppearsInLookup.ContainsKey(child.symbolName))
                     {
                         AppearsInLookup[child.symbolName] = new List<Symbol> {child};
