@@ -3480,7 +3480,7 @@ PrefabInstance:
     - target: {fileID: 8614976237503425204, guid: bf5eb8557c8fa12488ce00cc04793b8e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 417.4999
+      value: 417.49966
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf5eb8557c8fa12488ce00cc04793b8e, type: 3}
@@ -5246,6 +5246,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2095148003}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1113789104 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: af650df6f60759c46939021221633634,
+    type: 3}
+  m_PrefabInstance: {fileID: 1213156646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1151523227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5468,6 +5474,54 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1213156646}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1213156648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113789104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f8a07fb12342a89965bf8cae05e9a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventOnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  puzzle: {fileID: 11400000, guid: c0934735d46634e9d8d338b4d5e266b4, type: 2}
+  translationUI: {fileID: 1011943602}
+--- !u!114 &1213156649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113789104}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!65 &1213156650
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113789104}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 208.75018, y: 270.1756, z: 161.67482}
+  m_Center: {x: 6.0570455, y: 9.820108, z: 7.4068727}
 --- !u!1 &1220361850
 GameObject:
   m_ObjectHideFlags: 0
@@ -11770,6 +11824,9 @@ GameObject:
   - component: {fileID: 3015394676959540617}
   - component: {fileID: 3321889701860888458}
   - component: {fileID: 9199602331077571431}
+  - component: {fileID: 9199602331077571434}
+  - component: {fileID: 9199602331077571433}
+  - component: {fileID: 9199602331077571432}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -11887,3 +11944,51 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &9199602331077571432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8342772286522346695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f8a07fb12342a89965bf8cae05e9a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventOnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  puzzle: {fileID: 11400000, guid: 84577212a2b9749e98da36f0fb2e20d8, type: 2}
+  translationUI: {fileID: 1011943602}
+--- !u!114 &9199602331077571433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8342772286522346695}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!65 &9199602331077571434
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8342772286522346695}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.020138633, y: 0.02002121, z: 0.004004964}
+  m_Center: {x: -0.000048495363, y: -0.0000007110646, z: 0.002000136}
