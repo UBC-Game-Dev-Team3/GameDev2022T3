@@ -12,6 +12,7 @@ namespace Reliquary
         public GameObject rotSpritePrefab;
         public int centerSize;
         public int ringSize;
+        public int spriteSize = 70;
         [Tooltip("Time it takes to make one rotation"), Range(0.01f,10)]
         public float rotationTime = 1.5f;
 
@@ -44,7 +45,7 @@ namespace Reliquary
                 rotObj.localEulerAngles = new Vector3(0, 0, angle);
                     
                 Image image = rotObj.GetComponentInChildren<Image>();
-                ring.options[j].Render(image.gameObject);
+                ring.options[j].Render(image.gameObject, spriteSize);
             }
         }
 
