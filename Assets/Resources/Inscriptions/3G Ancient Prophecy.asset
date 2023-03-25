@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d320b5641ec44cd9a19576bc47b91f32, type: 3}
   m_Name: 3G Ancient Prophecy
   m_EditorClassIdentifier: 
-  objectName: Partially-Transcribed Ancient Prophecy
+  objectName: Rubbing of a Dark Prophecy
   words:
   - word: {fileID: 11400000, guid: 21fc87ebb0fdc45c48b20b495313b0d7, type: 2}
     options: []
