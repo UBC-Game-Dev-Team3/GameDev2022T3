@@ -13,17 +13,32 @@ namespace Reliquary
 
         private AudioSource _source;
         private ReliquaryTriggerObject _reliquaryTrigger;
+        private ReliquaryPuzzle _puzzle;
         private void Awake()
         {
             _reliquaryTrigger = GetComponent<ReliquaryTriggerObject>();
-            _reliquaryTrigger.puzzle.onSuccess.AddListener(OnSuccess);
-            _reliquaryTrigger.puzzle.onFailure.AddListener(OnFailure);
+            _puzzle = _reliquaryTrigger.puzzle;
+            _puzzle.onSuccess.AddListener(OnSuccess);
+            _puzzle.onFailure.AddListener(OnFailure);
             _source = GetComponent<AudioSource>();
         }
 
         public void OnFailure()
         {
             
+        }
+
+        public void TriggerPuzzleSuccess()
+        {
+            for (int i = 0; i < _puzzle.rings.Length; i++)
+            {
+                _puzzle.rings[i].SetSolved();
+            }
+            if (!_puzzle.solved)
+            {
+                Debug.Log("BRUH");
+            }
+            _puzzle.onSuccess.Invoke();
         }
 
         public void OnSuccess()

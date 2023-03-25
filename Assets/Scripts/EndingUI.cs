@@ -32,11 +32,11 @@ public class EndingUI : MonoBehaviour
 
     private void UpdateCount()
     {
-        for (int i = 0; i < puzzles.Length; i++)
+        numberSuccessful = 0;
+        foreach (ReliquaryPuzzle t in puzzles)
         {
-            if (puzzles[i].solved) numberSuccessful++;
+            if (t.solved) numberSuccessful++;
         }
+        Debug.Log(numberSuccessful);
     }
-    
-    
 }

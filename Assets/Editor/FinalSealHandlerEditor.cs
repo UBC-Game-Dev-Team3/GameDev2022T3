@@ -16,6 +16,10 @@ namespace CEditor
             EditorGUI.BeginChangeCheck();
             DrawPropertiesExcluding(serializedObject, DontInclude);
             FinalSealHandler handler = (FinalSealHandler) target;
+            if (GUILayout.Button("Trigger Full Success"))
+            {
+                handler.TriggerPuzzleSuccess();
+            }
             if (GUILayout.Button("Trigger Success"))
             {
                 handler.OnSuccess();

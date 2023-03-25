@@ -30,6 +30,17 @@ namespace Reliquary
             public int SelectedIndex;
             [Tooltip("Correct Answer")]
             public Symbol correctAnswer;
+
+            public void SetSolved()
+            {
+                for (int j = 0; j < options.Length; j++)
+                {
+                    if (correctAnswer.symbolName != options[j].symbolName) continue;
+                    SelectedIndex = j;
+                    return;
+                }
+                Debug.LogWarning("Ring cannot be solved!");
+            }
         }
 
         public void OnValidate()
