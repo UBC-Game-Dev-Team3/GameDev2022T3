@@ -20,5 +20,5 @@ MonoBehaviour:
     startKnown: 0
   - word: {fileID: 11400000, guid: a3e24518ca42d4fc5aaea6e93003259c, type: 2}
     options: []
-    hint: 
+    hint: Why by the bed
     startKnown: 0
