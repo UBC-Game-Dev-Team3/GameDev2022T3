@@ -40,7 +40,15 @@ namespace SymbolBook
         [Tooltip("List of Symbols this Makes Up")]
         public Symbol[] contents;
 
-        public void Render(GameObject parent, int spriteSize = 100, bool raycastTarget = true, bool highlight = false)
+        private void Awake()
+        {
+            PlayerSymbolName = SymbolDefaultName;
+            HasPlayerModified = false;
+            SeenByPlayer = false;
+            PlayerNotes = "";
+        }
+
+        public void Render(GameObject parent, bool raycastTarget = true, bool highlight = false, bool shouldBeBlack = false)
         {
             Image sprite = parent.GetComponent<Image>();
             int childCount = parent.transform.childCount;
@@ -61,7 +69,9 @@ namespace SymbolBook
             if (sprite != null) sprite.enabled = !isWord;
 
             HorizontalLayoutGroup layoutGroup = parent.GetComponent<HorizontalLayoutGroup>();
+            ContentSizeFitter fitter = parent.GetComponent<ContentSizeFitter>();
             if (layoutGroup != null) layoutGroup.enabled = isWord;
+            if (fitter != null) fitter.enabled = isWord;
 
             if (isWord)
             {
@@ -75,10 +85,11 @@ namespace SymbolBook
                 {
                     Transform child = sprite.transform.GetChild(i);
                     Image imageChild = child.GetComponent<Image>();
+                    if (shouldBeBlack) imageChild.color = Color.black;
                     
                     Sprite spriteI = highlight
                         ? contents[i].highlightImage == null ? contents[i].image : contents[i].highlightImage
-                        : contents[i].image;//
+                        : contents[i].image;
                     imageChild.sprite = spriteI;
                     imageChild.raycastTarget = raycastTarget;
                     imageChild.preserveAspect = true;

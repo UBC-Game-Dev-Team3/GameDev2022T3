@@ -45,7 +45,7 @@ namespace Reliquary
                 rotObj.localEulerAngles = new Vector3(0, 0, angle);
                     
                 Image image = rotObj.GetComponentInChildren<Image>();
-                ring.options[j].Render(image.gameObject, spriteSize);
+                ring.options[j].Render(image.gameObject);
             }
         }
 

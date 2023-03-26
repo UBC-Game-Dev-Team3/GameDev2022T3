@@ -100,7 +100,7 @@ namespace SymbolBook
             Symbol symbol = _manager.symbols[_index];
             nameField.text = symbol.HasPlayerModified ? symbol.PlayerSymbolName : "";
             description.text = symbol.PlayerNotes;
-            symbol.Render(image.transform.gameObject,250, false);
+            symbol.Render(image.transform.gameObject, false);
         }
 
         private void UpdateSeenInGrid()
@@ -114,6 +114,7 @@ namespace SymbolBook
             {
                 SymbolBookButton button = appearedIn.transform.GetChild(i).GetComponent<SymbolBookButton>();
                 button.gameObject.SetActive(true);
+                button.DisplayAsBlack = true;
                 button.DisplayedSymbol = parents[i];
                 button.ui = this;
             }
