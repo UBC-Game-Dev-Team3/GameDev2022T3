@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isWord: 0
   symbolName: Death_BASE
-  image: {fileID: 21300000, guid: e98cce9b1ea7d4cc798fc6c34602be08, type: 3}
-  highlightImage: {fileID: 21300000, guid: 4fceaf805b2a247ff84437f32c8214a8, type: 3}
+  image: {fileID: 21300000, guid: 7c564f5a63e0b4651a755435bba00fb0, type: 3}
+  highlightImage: {fileID: 21300000, guid: 606d77121c8cd4fa79eb9c4450291563, type: 3}
   startSeen: 0
   contents: []

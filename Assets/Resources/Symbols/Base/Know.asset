@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isWord: 0
   symbolName: Know_BASE
-  image: {fileID: 21300000, guid: 776a2a9db455d4e07965a60f1ef3667b, type: 3}
-  highlightImage: {fileID: 21300000, guid: 5d00ebe3f6a764f40a312d685ca6e4b4, type: 3}
+  image: {fileID: 21300000, guid: 6c06a0baea54f4fbcbc473c2b4bc05e2, type: 3}
+  highlightImage: {fileID: 21300000, guid: 2be4ec3fae387402d85d8812a6ffff03, type: 3}
   startSeen: 0
   contents: []

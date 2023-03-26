@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isWord: 0
   symbolName: Dark_BASE
-  image: {fileID: 21300000, guid: 5ee7635ee5af94c0f8d6699771f5685c, type: 3}
-  highlightImage: {fileID: 21300000, guid: 029897afcf6314187ab9ea76e9485d28, type: 3}
+  image: {fileID: 21300000, guid: fa9f0b920100d47dab3171810ba30ae8, type: 3}
+  highlightImage: {fileID: 21300000, guid: 0313648c88af447e5bff9b7e68d384c8, type: 3}
   startSeen: 0
   contents: []

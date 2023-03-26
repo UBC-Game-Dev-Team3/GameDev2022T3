@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isWord: 0
   symbolName: Noun_BASE
-  image: {fileID: 21300000, guid: face043e39d5a4dd784ce419d36555cd, type: 3}
-  highlightImage: {fileID: 21300000, guid: 866f3bdc9b3c7446495a1156caad4665, type: 3}
+  image: {fileID: 21300000, guid: 5ef0841f9deb941239d65b9cf54d1443, type: 3}
+  highlightImage: {fileID: 21300000, guid: 06b9bc3cd8ca343dcb3bbaa2688f184d, type: 3}
   startSeen: 1
   contents: []
