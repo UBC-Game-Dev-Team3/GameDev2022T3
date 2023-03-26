@@ -19,7 +19,6 @@ MonoBehaviour:
     - Have
     - Want
     - See
-    - Touch
     hint: Recieve
     startKnown: 0
   - word: {fileID: 11400000, guid: 393eb093c492c4c8cac09b6ad74ca969, type: 2}
@@ -27,7 +26,6 @@ MonoBehaviour:
     - Spirit
     - Godly
     - Human
-    - Demonic
     hint: 
     startKnown: 0
   - word: {fileID: 11400000, guid: 779c17f3bd86845a59318a06ea4ff5bf, type: 2}
@@ -35,6 +33,5 @@ MonoBehaviour:
     - Light
     - Glory
     - Grace
-    - Righteousness
     hint: 
     startKnown: 0

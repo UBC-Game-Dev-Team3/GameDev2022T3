@@ -19,7 +19,6 @@ MonoBehaviour:
     - Friend
     - Enemy
     - Ally
-    - God
     hint: Praise the High
     startKnown: 0
   - word: {fileID: 11400000, guid: a29940e22e015415f99001dfdd50fd97, type: 2}
@@ -27,6 +26,5 @@ MonoBehaviour:
     - Light
     - Grace
     - Save
-    - Help
     hint: 
     startKnown: 0

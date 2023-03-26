@@ -19,7 +19,6 @@ MonoBehaviour:
     - Spirit
     - High-God
     - Low-God
-    - Body
     hint: 
     startKnown: 0
   - word: {fileID: 11400000, guid: 574fef9a7ab6448848f415c608188134, type: 2}
@@ -27,6 +26,5 @@ MonoBehaviour:
     - Death-Bringing
     - World-Shattering
     - Life-Giving
-    - Long Dead
     hint: Why so Formless
     startKnown: 0

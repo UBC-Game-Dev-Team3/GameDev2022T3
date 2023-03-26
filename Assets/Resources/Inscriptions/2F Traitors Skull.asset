@@ -26,6 +26,5 @@ MonoBehaviour:
     - Believer
     - Traitor
     - Aspariant
-    - Sacrifice
     hint: Cunning
     startKnown: 0

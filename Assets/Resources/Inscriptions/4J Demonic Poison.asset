@@ -16,17 +16,15 @@ MonoBehaviour:
   words:
   - word: {fileID: 11400000, guid: bcd77eccc8316444ab6c9b16bdab38bb, type: 2}
     options:
-    - Liquid
+    - Vessel
     - Elixir
     - Poison
-    - Vessel
     hint: DO NOT TOUCH
     startKnown: 0
   - word: {fileID: 11400000, guid: 98795a508d95844d6926db9bad685171, type: 2}
     options:
-    - Spirit
+    - Demonic
     - Godly
     - Human
-    - Demonic
     hint: 
     startKnown: 0
