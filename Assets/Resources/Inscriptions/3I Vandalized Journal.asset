@@ -16,13 +16,15 @@ MonoBehaviour:
   words:
   - word: {fileID: 11400000, guid: c28df596d15e74118be90b30278f78e8, type: 2}
     options:
+    - Know
     - See
-    - TODO
+    - Have
     hint: 
     startKnown: 0
   - word: {fileID: 11400000, guid: a3e24518ca42d4fc5aaea6e93003259c, type: 2}
     options:
+    - Dark Know
+    - High Know
     - Dream Truth
-    - TODO
     hint: Why by the bed
     startKnown: 0

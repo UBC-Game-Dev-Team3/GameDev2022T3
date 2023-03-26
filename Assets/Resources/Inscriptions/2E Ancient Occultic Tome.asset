@@ -16,19 +16,22 @@ MonoBehaviour:
   words:
   - word: {fileID: 11400000, guid: cdccd7c1e78244e31a1b87f0bfd5b0fd, type: 2}
     options:
+    - Paper
+    - Cover
     - Record
-    - TODO
     hint: 
     startKnown: 0
   - word: {fileID: 11400000, guid: 874f7304b0726400dbd15063ac59f615, type: 2}
     options:
     - Ancient
-    - TODO
+    - Novel
+    - Mystic
     hint: 
     startKnown: 0
   - word: {fileID: 11400000, guid: 2f8db7ecd54944ac1a7c298048082132, type: 2}
     options:
     - Know Truth
-    - TODO
+    - See Dream
+    - Have Memory
     hint: What can be gained within
     startKnown: 0

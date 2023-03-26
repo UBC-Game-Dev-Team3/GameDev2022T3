@@ -16,13 +16,15 @@ MonoBehaviour:
   words:
   - word: {fileID: 11400000, guid: 704437715543e47aa8b80fa365cd1261, type: 2}
     options:
-    - God
-    - TODO
+    - Spirit
+    - High-God
+    - Low-God
     hint: 
     startKnown: 0
   - word: {fileID: 11400000, guid: 574fef9a7ab6448848f415c608188134, type: 2}
     options:
+    - Death-Bringing
+    - World-Shattering
     - Life-Giving
-    - TODO
     hint: Why so Formless
     startKnown: 0
