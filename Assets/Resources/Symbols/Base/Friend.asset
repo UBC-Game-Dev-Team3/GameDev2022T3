@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isWord: 0
   symbolName: Friend_BASE
-  image: {fileID: 21300000, guid: a2df7591de5dc4ddda21f6a3af84cf91, type: 3}
-  highlightImage: {fileID: 21300000, guid: 30aabc2ab83c04da39dcced24e8d2548, type: 3}
+  image: {fileID: 21300000, guid: ac7d2220bc92a4284b985d760067d725, type: 3}
+  highlightImage: {fileID: 21300000, guid: 12863341ec98a41968d2a111a3aebe69, type: 3}
   startSeen: 0
   contents: []
