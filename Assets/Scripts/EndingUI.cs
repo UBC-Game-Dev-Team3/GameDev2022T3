@@ -5,7 +5,7 @@ using Util;
 public class EndingUI : MonoBehaviour
 {
     public ReliquaryPuzzle[] puzzles;
-    private int numberSuccessful = 0;
+    private int _numberSuccessful = 0;
     
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class EndingUI : MonoBehaviour
     private void OnSuccess()
     {
         UpdateCount();
-        if (numberSuccessful != puzzles.Length) return;
+        if (_numberSuccessful != puzzles.Length) return;
         PlayerRelated.TriggerUIOpen();
         transform.GetChild(0).gameObject.SetActive(true);
     }
@@ -32,11 +32,11 @@ public class EndingUI : MonoBehaviour
 
     private void UpdateCount()
     {
-        numberSuccessful = 0;
+        _numberSuccessful = 0;
         foreach (ReliquaryPuzzle t in puzzles)
         {
-            if (t.solved) numberSuccessful++;
+            if (t.solved) _numberSuccessful++;
         }
-        Debug.Log(numberSuccessful);
+        Debug.Log(_numberSuccessful);
     }
 }
