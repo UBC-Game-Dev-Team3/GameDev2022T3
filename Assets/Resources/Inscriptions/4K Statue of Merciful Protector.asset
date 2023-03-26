@@ -16,13 +16,17 @@ MonoBehaviour:
   words:
   - word: {fileID: 11400000, guid: e8139ab993be1442082c291f84cc1092, type: 2}
     options:
+    - Friend
+    - Enemy
     - Ally
-    - TODO
-    hint: A Friend Perhaps
+    - God
+    hint: Praise the High
     startKnown: 0
   - word: {fileID: 11400000, guid: a29940e22e015415f99001dfdd50fd97, type: 2}
     options:
+    - Light
     - Grace
-    - TODO
+    - Save
+    - Help
     hint: 
     startKnown: 0

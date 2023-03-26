@@ -16,13 +16,16 @@ MonoBehaviour:
   words:
   - word: {fileID: 11400000, guid: a2e7e13498e8f4ff68e037c7136536d6, type: 2}
     options:
+    - Wave
     - Fluid
-    - TODO
+    - Tide
     hint: 
     startKnown: 0
   - word: {fileID: 11400000, guid: 393eb093c492c4c8cac09b6ad74ca969, type: 2}
     options:
+    - Demonic
     - Godly
-    - TODO
+    - Healing
+    - Redemption
     hint: Statue Related
     startKnown: 0

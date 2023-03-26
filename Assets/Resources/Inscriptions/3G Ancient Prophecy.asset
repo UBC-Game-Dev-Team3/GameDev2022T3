@@ -17,19 +17,22 @@ MonoBehaviour:
   - word: {fileID: 11400000, guid: 21fc87ebb0fdc45c48b20b495313b0d7, type: 2}
     options:
     - Time
-    - TODO
-    hint: An Event
-    startKnown: 0
+    hint: 
+    startKnown: 1
   - word: {fileID: 11400000, guid: 6e946ea8a7435486f8faf448f356dc1d, type: 2}
     options:
+    - Light
+    - Strife
     - Dark
-    - TODO
+    - Death
     hint: Bad
     startKnown: 0
   - word: {fileID: 11400000, guid: d125d2635ebc24da781b38ab5c74c3a4, type: 2}
     options:
     - Human
-    - TODO
+    - Spirit
+    - Demon
+    - Animal
     hint: For Whom
     startKnown: 0
   - word: {fileID: 11400000, guid: 7215a0e0adc66492cafa340f7b6916af, type: 2}
