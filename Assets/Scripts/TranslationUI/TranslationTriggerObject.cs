@@ -21,7 +21,7 @@ namespace TranslationUI
                 string[] words = puzzle.words.Select(pair => pair.word.PlayerSymbolName).ToArray();
                 bool hasUnanswered = words.Any(str => str == Symbol.SymbolDefaultName);
                 if (hasUnanswered) return puzzleName + '\n' + Symbol.SymbolDefaultName;
-                return puzzleName + '\n' + string.Join(' ', words);
+                return puzzleName + '\n' + "\"<i>" + string.Join(' ', words) + "</i>\"";
             }
         }
         
