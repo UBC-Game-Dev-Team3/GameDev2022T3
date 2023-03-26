@@ -15,10 +15,14 @@ MonoBehaviour:
   objectName: Statue of the Merciful Protector
   words:
   - word: {fileID: 11400000, guid: e8139ab993be1442082c291f84cc1092, type: 2}
-    options: []
+    options:
+    - Ally
+    - TODO
     hint: A Friend Perhaps
     startKnown: 0
   - word: {fileID: 11400000, guid: a29940e22e015415f99001dfdd50fd97, type: 2}
-    options: []
+    options:
+    - Grace
+    - TODO
     hint: 
     startKnown: 0

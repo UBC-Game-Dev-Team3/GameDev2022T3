@@ -15,10 +15,14 @@ MonoBehaviour:
   objectName: Traitor's Skull
   words:
   - word: {fileID: 11400000, guid: 7bc428317276b4aeaa26c0df2b738d30, type: 2}
-    options: []
+    options:
+    - Long Dead
+    - TODO
     hint: Old
     startKnown: 0
   - word: {fileID: 11400000, guid: 93f1623823a174c0e91c2f0152d9014e, type: 2}
-    options: []
+    options:
+    - Traitor
+    - TODO
     hint: Cunning
     startKnown: 0

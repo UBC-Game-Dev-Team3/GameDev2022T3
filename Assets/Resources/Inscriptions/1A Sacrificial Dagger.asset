@@ -15,10 +15,14 @@ MonoBehaviour:
   objectName: Sacrificial Dagger
   words:
   - word: {fileID: 11400000, guid: 839e3a6b1da4f4e478cb493be2220f04, type: 2}
-    options: []
+    options:
+    - Weapon
+    - TODO
     hint: 
     startKnown: 0
   - word: {fileID: 11400000, guid: 2eb145549a5864efba685d76ffc9f6cf, type: 2}
-    options: []
+    options:
+    - Death Ritual
+    - TODO
     hint: Why display a common dagger
     startKnown: 0
