@@ -28,7 +28,7 @@ namespace TranslationUI
         public override void Interact(object src, params object[] args)
         {
             base.Interact(src, args);
-            translationUI.OpenUI(puzzle);
+            translationUI.OpenUI(this, puzzle);
         }
     }
 }

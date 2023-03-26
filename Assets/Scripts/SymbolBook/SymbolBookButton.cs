@@ -10,13 +10,15 @@ namespace SymbolBook
         [NonSerialized]
         public SymbolBookUI ui;
 
+        public bool DisplayAsBlack { get; set; } = false;
+
         public Symbol DisplayedSymbol
         {
             get => _symbol;
             set
             {
                 _symbol = value;
-                _symbol.Render(sprite.transform.gameObject, 100);
+                _symbol.Render(sprite.transform.gameObject, shouldBeBlack: DisplayAsBlack);
                 if (text == null) return;
                 text.text = string.IsNullOrWhiteSpace(_symbol.PlayerSymbolName) ? "???" : _symbol.PlayerSymbolName;
             }

@@ -17,7 +17,7 @@ namespace TranslationUI
             set
             {
                 _symbol = value;
-                _symbol.Render(sprite.transform.gameObject, 100);
+                _symbol.Render(sprite.transform.gameObject);
                 if (text == null) return;
                 text.text = string.IsNullOrWhiteSpace(_symbol.PlayerSymbolName) ? Symbol.SymbolDefaultName : _symbol.PlayerSymbolName;
             }
@@ -38,12 +38,12 @@ namespace TranslationUI
 
         public void Highlight()
         {
-            _symbol.Render(sprite.transform.gameObject, 100, highlight: true);
+            _symbol.Render(sprite.transform.gameObject, highlight: true);
         }
         
         public void DeHighlight()
         {
-            _symbol.Render(sprite.transform.gameObject, 100);
+            _symbol.Render(sprite.transform.gameObject);
         }
 
         public void UpdateFromHint(TranslationPuzzle.WordPair word)

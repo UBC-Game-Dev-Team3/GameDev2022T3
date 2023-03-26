@@ -32,13 +32,16 @@ namespace TranslationUI
         public GameObject symbolPrefab;
         [Tooltip("Prefab for Options")]
         public GameObject optionButtonPrefab;
-        
+
+        private TMP_Text _tooltipText;
         private TranslationPuzzle _puzzle;
         private InputActionMap _actions;
+        private TranslationTriggerObject _trigger;
         private int _currIndex = -1;
         private void Awake()
         {
             _actions = FindObjectOfType<PlayerInput>().actions.FindActionMap("Player");
+            _tooltipText = tooltipUI.GetComponentInChildren<TMP_Text>();
             PlayerRelated.OnUIChangeDelegate += OnUIStateChange;
         }
         
@@ -67,10 +70,12 @@ namespace TranslationUI
             PlayerRelated.TriggerUIClose();
             UI.SetActive(false);
             _actions.FindAction("Select").performed -= CancelUI;
+            _tooltipText.text = _trigger.TooltipText;
         }
 
-        public void OpenUI(TranslationPuzzle puzzle)
+        public void OpenUI(TranslationTriggerObject triggerObject, TranslationPuzzle puzzle)
         {
+            _trigger = triggerObject;
             _puzzle = puzzle;
             PlayerRelated.TriggerUIOpen();
             UI.SetActive(true);
