@@ -36,6 +36,7 @@ MonoBehaviour:
   - word: {fileID: 11400000, guid: 7215a0e0adc66492cafa340f7b6916af, type: 2}
     options:
     - Die
-    - TODO
+    - Ascend
+    - Lose
     hint: 
     startKnown: 0
