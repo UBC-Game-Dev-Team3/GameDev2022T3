@@ -77,6 +77,7 @@ namespace StarterAssets
 #endif
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
+		private InputActionMap _actions;
 		private GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
@@ -115,6 +116,9 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+			
+			_actions = _playerInput.actions.FindActionMap("Player");
+			_actions.FindAction("Jump").performed += CallJump;
 		}
 
 		private void Update()
@@ -206,6 +210,15 @@ namespace StarterAssets
 			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 		}
 
+		private void CallJump(InputAction.CallbackContext callbackContext)
+		{
+			if (movementEnabled && Grounded && _jumpTimeoutDelta <= 0.0f)
+			{
+				// the square root of H * -2 * G = how much velocity needed to reach desired height
+				_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+			}
+		}
+
 		private void JumpAndGravity()
 		{
 			if (Grounded)
@@ -217,13 +230,6 @@ namespace StarterAssets
 				if (_verticalVelocity < 0.0f)
 				{
 					_verticalVelocity = -2f;
-				}
-
-				// Jump
-				if (movementEnabled && _input.jump && _jumpTimeoutDelta <= 0.0f)
-				{
-					// the square root of H * -2 * G = how much velocity needed to reach desired height
-					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 				}
 
 				// jump timeout
@@ -242,9 +248,6 @@ namespace StarterAssets
 				{
 					_fallTimeoutDelta -= Time.deltaTime;
 				}
-
-				// if we are not grounded, do not jump
-				_input.jump = false;
 			}
 
 			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
